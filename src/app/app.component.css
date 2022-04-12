@@ -1,0 +1,105 @@
+.App {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    display: block;
+
+    background-color: #005db2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);  
+    color: white;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  #app1{
+    margin-top: 260px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  #app2{
+    color: #ffa300;
+    font-style: italic;
+  }
+  
+  #user::placeholder, #password::placeholder{
+    color: rgba(255, 255, 255, 0.493);
+  }
+  
+  #user, #password{
+    margin-left: 20px;
+    background-color: transparent;
+    width: 20%;
+    text-align: center;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-bottom: 7px;
+    outline: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.781);
+    color: white;
+  }
+  
+  #password{
+    margin-bottom: 12px;
+  }
+  
+  #login-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;  
+  }
+  
+  #login, #register{
+    font-family: 'Work Sans', sans-serif;
+    cursor: pointer;
+    font-weight: 0, 400; 
+    transition: 0.15s; 
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.452);
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: transparent;
+    border-color: white;
+    border: 0;
+    color: rgb(255, 255, 255);
+    border-radius: 3px;
+    border-width: 1.5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-top: 20px;
+  }
+
+  #register{
+    width: 80px;
+  }
+
+  #login{
+      width: 80px;
+      margin-left: 114px;
+  }
+  
+  #login:hover, #register:hover{
+    color: #005db2;
+    background-color: rgb(255, 255, 255);
+    transition: 0.3s;
+  }
