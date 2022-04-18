@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ɵparseCookieValue } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class HttpService {
   private authToken: string;
 
   constructor() {
-    // TODO recuperar token do cookie, caso exista
+    this.authToken = localStorage.getItem("token");
   }
 
   private async request(type: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH', endpoint: string, body?: Record<string, any>): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
@@ -23,7 +22,7 @@ export class HttpService {
       req.open(type, url, true);
       req.setRequestHeader('Content-Type', 'application/json')
       if (this.authToken) {
-        req.setRequestHeader('Authorization', `Bearer ${this.authToken}`);
+        req.setRequestHeader("Authorization", "Bearer" + this.authToken);
       }
       req.send(JSON.stringify(body));
 
@@ -34,6 +33,7 @@ export class HttpService {
 
           if (resBody.access_token) {
             this.setAuthToken(resBody.access_token);
+
           }
           resolve({
             statusCode: req.status,
@@ -48,6 +48,7 @@ export class HttpService {
 
   private setAuthToken(token: string) {
     this.authToken = token;
+    localStorage.setItem("token", token);
   }
 
   async get(endpoint: string) {
