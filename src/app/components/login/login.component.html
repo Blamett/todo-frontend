@@ -1,0 +1,11 @@
+<div className="App">
+    <h1 id='app1'>TODO<span id='app2'>App</span></h1>
+    <div id="user_pass">
+      <input id='user' type="text" placeholder='Usuário' [(ngModel)]="user" />
+      <input id='password' type="password" placeholder='Senha' [(ngModel)]="pass" />
+    </div>
+    <div id='login-div'>
+      <button id='login' (click)="login()">Login</button>
+      <button id='register' (click)="register()">Register</button>
+    </div>
+  </div>

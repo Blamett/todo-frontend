@@ -27,7 +27,10 @@ export class AppComponent {
       username: this.user,
       password: this.pass
     });
-    if(res.statusCode > 299 || res.statusCode < 200){
+    if(res.statusCode === 500){
+      this._snackBar.open('Usuário ja existente', 'Fechar');
+    }
+    else if(res.statusCode > 299 || res.statusCode < 200){
       this._snackBar.open(`Senha deve conter -  Letras Maiúsculas (ABC), Minúsculas (abc), Caractere Especial (#$&) e Números (123)`, 'Fechar', {
         duration: this.durationInSeconds * 1000
       })

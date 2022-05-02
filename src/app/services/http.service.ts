@@ -9,7 +9,9 @@ export class HttpService {
 
   private authToken: string;
 
-  constructor() {
+  constructor(
+    // private readonly router: Router
+  ) {
     this.authToken = localStorage.getItem("token");
   }
 
@@ -35,6 +37,9 @@ export class HttpService {
             this.setAuthToken(resBody.access_token);
 
           }
+
+          this.isAuthenticated()
+
           resolve({
             statusCode: req.status,
             responseBody: resBody,
@@ -44,6 +49,10 @@ export class HttpService {
       req.addEventListener('error', e => reject(e));
       req.addEventListener('abort', e => reject(e));
     });
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.authToken;
   }
 
   private setAuthToken(token: string) {
