@@ -20,7 +20,7 @@ export class HttpService {
 
       const req = new XMLHttpRequest();
       const url = this.urlBase + endpoint;
-
+      
       req.open(type, url, true);
       req.setRequestHeader('Content-Type', 'application/json')
       if (this.authToken) {
