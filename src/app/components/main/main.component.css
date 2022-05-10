@@ -6,13 +6,26 @@ header{
 }
 
 body{
-    background-color: antiquewhite;
+
+}
+
+.coluna{
+    width: 600px;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.maincontent{
+    width: 100%;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
 }
 
 #t1{
+    margin-left: 30%;
     color: #fff;
     font-size: 25px;
-    align-items: flex-start;
     font-family: 'Roboto Slab', serif;
     text-align: center;
 }
