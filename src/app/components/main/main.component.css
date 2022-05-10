@@ -1,0 +1,61 @@
+header{
+    display: flex;
+    background-color: #005db2;
+    height: 45px;
+    align-items: center;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+#t1{
+    color: #fff;
+    font-size: 25px;
+    align-items: flex-start;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+}
+
+#t2{
+    color: #ffa300;
+    font-style: italic;
+}
+
+#menuicon{
+    color: white;
+    margin-left: 30px;
+    width: 50px;
+    height: 25px;
+}
+
+#menuicon:hover{
+    cursor: pointer;
+}
+
+#searchicon{
+    position: absolute;
+    color: white;
+    margin-left: 92px;
+    width: 50px;
+    height: 22px;
+}
+
+#search{
+    margin-left: 20px;
+    background-color: rgba(255, 255, 255, 0.164);
+    width: 12%;
+    height: 30px;
+    text-align: left;
+    border: 0;
+    padding: 0;
+    color: white;
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+    padding-left:33px;
+}
+
+#search::placeholder{
+    color: rgba(255, 255, 255, 0.877);
+}

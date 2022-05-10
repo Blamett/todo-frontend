@@ -1,125 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-html,
-body {
-    height: 100%;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
 }
 
-.App {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    display: block;
-
-    background-color: #005db2;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: flex-start;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-#app1 {
-    margin-top: 260px;
-    margin-bottom: 20px;
-    color: #fff;
-    font-family: 'Roboto Slab', serif;
-}
-
-#app2 {
-    color: #ffa300;
-    font-style: italic;
-}
-
-#user::placeholder,
-#password::placeholder {
-    color: rgba(255, 255, 255, 0.493);
-}
-
-#user,
-#password {
-    margin-left: 20px;
-    background-color: transparent;
-    width: 20%;
-    text-align: center;
-    border: 0;
-    padding: 0;
-    box-sizing: border-box;
-    margin-bottom: 7px;
-    outline: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.781);
-    color: white;
-}
-
-#password {
-    margin-bottom: 12px;
-}
-
-#login-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-#login,
-#register {
-    font-family: 'Work Sans', sans-serif;
-    cursor: pointer;
-    font-weight: 0, 400;
-    transition: 0.15s;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.452);
-    margin-right: 5px;
-    margin-left: 5px;
-    background-color: transparent;
-    border-color: white;
-    border: 0;
-    color: rgb(255, 255, 255);
-    border-radius: 3px;
-    border-width: 1.5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-top: 20px;
-}
-
-#register {
-    width: 80px;
-}
-
-#login {
-    width: 80px;
-    margin-left: 114px;
-}
-
-#login:hover,
-#register:hover {
-    color: #005db2;
-    background-color: rgb(255, 255, 255);
-    transition: 0.3s;
-}
-
-#error_text{
-    font-family: 'Work Sans', sans-serif;
-    font-size: 14px;
-    text-align: center;
-    margin-left: 15px;
-    color: rgb(255, 123, 0);
-}
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+  
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+  
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+  }
