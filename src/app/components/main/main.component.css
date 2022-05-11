@@ -1,8 +1,16 @@
-header{
+.header{
     display: flex;
     background-color: #005db2;
     height: 45px;
     align-items: center;
+}
+
+.header > div {
+    flex: 1 1 100%;
+}
+
+.title {
+    margin: auto;
 }
 
 body{
@@ -10,16 +18,67 @@ body{
 }
 
 .coluna{
-    width: 600px;
+    width: 800px;
     flex-direction: column;
     margin: 0 auto;
-    text-align: center;
 }
 
 .maincontent{
     width: 100%;
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     background-color: rgb(255, 255, 255);
+}
+
+.mainHeader{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.hoje{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.date{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.555);
+    font-size: 13px;
+    margin: 7px 0 0 8px;
+}
+
+.input{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+
+#input-icon{
+    position: absolute;
+    right: 0;;
+    color: rgba(0, 0, 0, 0.322);
+    cursor: pointer;
+}
+
+#inputodo{
+    border: 0;
+    outline: 0;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.185);
+    padding: 10px 30px 13px 5px;
+    width: 100%;
+}
+
+#todo{
+    border: 0;
+    outline: 0;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.185);
+    padding: 10px 0 10px 5px;
+    width: 100%;
 }
 
 #t1{

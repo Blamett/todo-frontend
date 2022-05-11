@@ -9,6 +9,8 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class MainComponent implements OnInit {
 
+  date = new Date()
+
   constructor(
     private readonly router: Router,
     private readonly httpService: HttpService,

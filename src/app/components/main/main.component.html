@@ -1,16 +1,29 @@
-<header>
-    <span id="menuicon" class="iconify" data-icon="mdi:menu"></span>
-    <input id="search" type="search" placeholder="Search" />
-    <span id="searchicon" class="iconify" data-icon="mdi:magnify"></span>
-
-    <h1 id='t1'>TODO<span id='t2'>App</span></h1>
+<header class="header">
+    <div>
+        <span id="menuicon" class="iconify" data-icon="mdi:menu"></span>
+        <input id="search" type="search" placeholder="Search" />
+        <span id="searchicon" class="iconify" data-icon="mdi:magnify"></span>
+    </div>
+    <div>
+        <h1 class="title" id='t1'>TODO<span id='t2'>App</span></h1>
+    </div>
+    <div></div>
 </header>
+
 <body>
     <div class="coluna">
-        <p>test</p>
+        <div class="mainHeader">
+            <p class="hoje">Today</p>
+            <p class="date">{{date | date:'EEE MMMM d'}}</p>
+        </div>
 
         <div class="maincontent">
-            <input id="todo" type="text" placeholder="Enter a task name here..." />
+            <div class="input">
+                <input id="inputodo" type="text" placeholder="Enter a task name here..." />
+                <span id="input-icon" class="iconify" data-icon="fluent:send-20-regular" data-width="25"
+                    data-height="50"></span>
+            </div>
+            <span id="todo">test1</span>
         </div>
     </div>
 </body>
