@@ -60,7 +60,7 @@ body{
 
 #input-icon{
     position: absolute;
-    right: 0;;
+    right: 0;
     color: rgba(0, 0, 0, 0.322);
     cursor: pointer;
 }
@@ -82,7 +82,6 @@ body{
 }
 
 #t1{
-    margin-left: 30%;
     color: #fff;
     font-size: 25px;
     font-family: 'Roboto Slab', serif;
@@ -94,11 +93,19 @@ body{
     font-style: italic;
 }
 
+#menubutton{
+    background-color: transparent;
+    border: 0;
+    padding: 0 ;
+    margin: 0 0 0 15px;
+    outline: 0;
+}
+
 #menuicon{
     color: white;
-    margin-left: 30px;
     width: 50px;
     height: 25px;
+    vertical-align: middle;
 }
 
 #menuicon:hover{
@@ -107,16 +114,17 @@ body{
 
 #searchicon{
     position: absolute;
+    right: 160px;
+    bottom: 4px;
     color: white;
-    margin-left: 92px;
     width: 50px;
     height: 22px;
 }
 
 #search{
-    margin-left: 20px;
+    width: 100%;
+    margin-left: 10px;
     background-color: rgba(255, 255, 255, 0.164);
-    width: 12%;
     height: 30px;
     text-align: left;
     border: 0;
@@ -130,4 +138,17 @@ body{
 
 #search::placeholder{
     color: rgba(255, 255, 255, 0.877);
+}
+
+.searchbar{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.left-header{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

@@ -24,12 +24,11 @@ export class HttpService {
       req.open(type, url, true);
       req.setRequestHeader('Content-Type', 'application/json')
       if (this.authToken) {
-        req.setRequestHeader("Authorization", "Bearer" + this.authToken);
+        req.setRequestHeader("Authorization", "Bearer " + this.authToken);
       }
       req.send(JSON.stringify(body));
 
       req.addEventListener('load', r => {
-        console.log(req.responseText);
         if (req.responseText) {
           const resBody = JSON.parse(req.responseText);
 
