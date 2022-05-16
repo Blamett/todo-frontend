@@ -24,8 +24,12 @@ export class MainComponent implements OnInit  {
     this.refreshTodos()
   }
 
+  //TODO, Implementar método para pegar o User.Id no token
+
+  userId = 12
+
   async refreshTodos() {
-    const res = await this.httpService.get(`todos/${"user.id aq"}`)
+    const res = await this.httpService.get(`todos/${this.userId}`)
     console.log(res)
   }
 
