@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   async register() {
-
+    
     const res = await this.httpService.post('user', {
       username: this.user,
       password: this.pass

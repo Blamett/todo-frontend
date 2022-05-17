@@ -27,11 +27,13 @@
 
         <div class="maincontent">
             <div class="input">
-                <input id="inputodo" type="text" placeholder="Enter a task name here..." />
-                <span id="input-icon" class="iconify" data-icon="fluent:send-20-regular" data-width="25"
-                    data-height="50"></span>
+                <input id="inputodo" [(ngModel)]="inputodo"  type="text" placeholder="Enter a task name here..."/>
+                <button id="create-todo-button" (click)="createTodo()">Send</button>
             </div>
-            <span id="todo">test1</span>
+
+            <li id="todos-list" *ngFor="let todo of todos">
+                <span id="todo">{{todo.task}}</span>
+            </li>
         </div>
     </div>
 </body>
