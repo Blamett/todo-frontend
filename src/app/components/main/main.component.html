@@ -27,13 +27,25 @@
 
         <div class="maincontent">
             <div class="input">
-                <input id="inputodo" [(ngModel)]="inputodo"  type="text" placeholder="Enter a task name here..."/>
-                <button id="create-todo-button" (click)="createTodo()">Send</button>
+                <input id="inputodo" (keyup.enter)="createTodo()" [(ngModel)]="inputodo"  type="text" maxlength="62" placeholder="Enter a task name here..."/>
+                <button id="create-todo-button" (click)="createTodo()"><span class="iconify" id="button-icon" data-icon="fluent:send-20-regular" data-width="25" data-height="25"></span></button>
             </div>
 
-            <li id="todos-list" *ngFor="let todo of todos">
-                <span id="todo">{{todo.task}}</span>
-            </li>
+            <div id="todo-list">
+                <ul>
+                    <li *ngFor="let todo of todos; index as i" class="todo-item">
+                        <input type="checkbox" [attr.id]="'todo' + i" name="todo" value="todo">
+                        <label id="todolabel" [attr.for]="'todo' + i" [attr.data-content]="todo.task">{{todo.task}}</label>
+                        <button class="edit-button">
+                            <span class="iconify edit-icon" data-icon="akar-icons:edit" data-width="25" data-height="25"></span>
+                        </button>
+
+                        <button class="delete-button">
+                            <span class="iconify delete-icon" data-icon="akar-icons:trash-can" data-width="25" data-height="25"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

@@ -66,4 +66,8 @@ export class HttpService {
   async post(endpoint: string, body: Record<string, any>) {
     return await this.request('POST', endpoint, body);
   }
+
+  async delete(endpoint: string) {
+    return await this.request('DELETE', endpoint);
+  }
 }

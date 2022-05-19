@@ -38,9 +38,16 @@ export class MainComponent implements OnInit {
       task: this.inputodo,
       isDone: 0
     })
+    this.inputodo = ''
     this.refreshTodos()
-  }
-  
+  }  
+
+  async deleteTodo() {
+    await this.httpService.delete(`todos/${""}`)
+    this.refreshTodos()
+  }  
+
+  //TODO finalizar delete
 
   outroMetodo() {
     if (!this.httpService.isAuthenticated()) {
