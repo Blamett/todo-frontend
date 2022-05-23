@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
 
-  private readonly urlBase = 'http://localhost:3000/';
+  private readonly urlBase = 'http://192.168.90.58:3000/';
 
   private authToken: string;
 
@@ -20,7 +20,7 @@ export class HttpService {
 
       const req = new XMLHttpRequest();
       const url = this.urlBase + endpoint;
-      
+
       req.open(type, url, true);
       req.setRequestHeader('Content-Type', 'application/json')
       if (this.authToken) {
@@ -29,8 +29,9 @@ export class HttpService {
       req.send(JSON.stringify(body));
 
       req.addEventListener('load', r => {
+        let resBody;
         if (req.responseText) {
-          const resBody = JSON.parse(req.responseText);
+          resBody = JSON.parse(req.responseText);
 
           if (resBody.access_token) {
             this.setAuthToken(resBody.access_token);
@@ -38,12 +39,12 @@ export class HttpService {
           }
 
           this.isAuthenticated()
-
-          resolve({
-            statusCode: req.status,
-            responseBody: resBody,
-          });
         }
+
+        resolve({
+          statusCode: req.status,
+          responseBody: resBody,
+        });
       });
       req.addEventListener('error', e => reject(e));
       req.addEventListener('abort', e => reject(e));
@@ -52,6 +53,11 @@ export class HttpService {
 
   isAuthenticated(): boolean {
     return !!this.authToken;
+  }
+
+  logout() {
+    this.authToken = null;
+    window.localStorage.removeItem('token')
   }
 
   private setAuthToken(token: string) {
@@ -65,6 +71,14 @@ export class HttpService {
 
   async post(endpoint: string, body: Record<string, any>) {
     return await this.request('POST', endpoint, body);
+  }
+
+  async put(endpoint: string, body: Record<string, any>) {
+    return await this.request('PUT', endpoint, body);
+  }
+
+  async patch(endpoint: string, body: Record<string, any>) {
+    return await this.request('PATCH', endpoint, body);
   }
 
   async delete(endpoint: string) {

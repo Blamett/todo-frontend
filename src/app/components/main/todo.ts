@@ -1,6 +1,6 @@
 export interface Todo {
     id: string
     task: string
-    idDone: boolean
+    isDone: boolean
     createdAt: string
 }

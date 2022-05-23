@@ -1,4 +1,4 @@
-import { Component, Directive, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { Todo } from './todo';
@@ -14,16 +14,25 @@ export class MainComponent implements OnInit {
   date = new Date()
   inputodo: string = '';
 
+  private isEditModeMap = new Map<Todo, boolean>();
+
   constructor(
     private readonly router: Router,
     private readonly httpService: HttpService,
   ) { }
 
   ngOnInit(): void {
-    this.outroMetodo();
+    this.redirectNonAuthorized();
   }
 
   ngAfterViewInit(): void {
+    this.refreshTodos()
+  }
+
+  async isDoneCheckbox(id: string, isDone: boolean) {
+    await this.httpService.patch(`todos/${id}`, {
+      isDone
+    })
     this.refreshTodos()
   }
 
@@ -40,19 +49,46 @@ export class MainComponent implements OnInit {
     })
     this.inputodo = ''
     this.refreshTodos()
-  }  
+  }
 
-  async deleteTodo() {
-    await this.httpService.delete(`todos/${""}`)
-    this.refreshTodos()
-  }  
+  async deleteTodo(id: string) {
+    await this.httpService.delete(`todos/${id}`)
+    await this.refreshTodos()
+  }
 
-  //TODO finalizar delete
+  async updateTodo(id: string, task: string) {
+    if (task != '') {
+      await this.httpService.patch(`todos/${id}`, {
+        task
+      })
+      this.refreshTodos()
+    }
+  }
 
-  outroMetodo() {
+  logout() {
+    this.httpService.logout();
+    this.router.navigate(["login"]);
+  }
+
+  redirectNonAuthorized() {
     if (!this.httpService.isAuthenticated()) {
       this.router.navigate(["login"]);
     }
+  }
+
+  toggleEditItem(todo: Todo) {
+    this.isEditModeMap.set(todo, !this.isEditModeMap.get(todo));
+  }
+
+  isItemEditMode(todo: Todo) {
+    if (!this.isEditModeMap.has(todo)) {
+      this.isEditModeMap.set(todo, false);
+    }
+    return this.isEditModeMap.get(todo);
+  }
+
+  focusField(field: HTMLInputElement) {
+    field.focus();
   }
 
 }

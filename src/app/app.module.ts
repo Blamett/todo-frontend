@@ -8,12 +8,14 @@ import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { AfterIfDirective } from './after-if.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    AfterIfDirective
   ],
   imports: [
     MatSnackBarModule,
