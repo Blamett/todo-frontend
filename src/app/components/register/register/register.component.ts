@@ -11,8 +11,6 @@ import { HttpService } from '../../../services/http.service';
 export class RegisterComponent implements OnInit {
 
   durationInSeconds = 5;
-  user: string = '';
-  pass: string = '';
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -27,11 +25,12 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  async register() {
+  async register(email: string, username: string, password: string) {
     
     const res = await this.httpService.post('user', {
-      username: this.user,
-      password: this.pass
+      email: email,
+      username: username,
+      password: password
     });
     if (res.statusCode === 500) {
       this._snackBar.open('Usuário ja existente', 'Fechar');
@@ -45,6 +44,11 @@ export class RegisterComponent implements OnInit {
       this._snackBar.open('Usuário Registrado!', 'Fechar')
     }
 
+  }
+
+  async loginRedirect() {
+    this.httpService.logout();
+    this.router.navigate(["login"]);
   }
 
 }
