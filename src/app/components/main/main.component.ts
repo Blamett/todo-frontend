@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
+import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import { Todo } from './todo';
 
 @Component({
@@ -19,6 +21,7 @@ export class MainComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly httpService: HttpService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +52,16 @@ export class MainComponent implements OnInit {
     })
     this.inputodo = ''
     this.refreshTodos()
+  }
+
+  confirmDelete(id: string) {
+    this.dialog.open(ConfirmDeleteDialogComponent, {
+      data: {
+        onYesCallback: () => {
+          this.deleteTodo(id);
+        }
+      } as ConfirmDeleteDialogData
+    });
   }
 
   async deleteTodo(id: string) {
@@ -90,5 +103,4 @@ export class MainComponent implements OnInit {
   focusField(field: HTMLInputElement) {
     field.focus();
   }
-
 }
