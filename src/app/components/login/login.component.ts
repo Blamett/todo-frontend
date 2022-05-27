@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PasswordRecoverDialogComponent } from '../password-recover-dialog/password-recover-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private httpService: HttpService,
     private readonly router: Router,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -45,5 +48,10 @@ export class LoginComponent implements OnInit {
     else if (res.statusCode === 200) {
       this.router.navigate([""]);
     }
+  }
+
+  resetPassword(){
+    this.dialog.open(PasswordRecoverDialogComponent, {
+    });
   }
 }

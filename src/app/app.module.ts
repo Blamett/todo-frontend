@@ -13,6 +13,8 @@ import { ConfirmDeleteDialogComponent } from './components/confirm-delete-dialog
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register/register.component';
+import { PasswordRecoverDialogComponent } from './components/password-recover-dialog/password-recover-dialog.component';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { RegisterComponent } from './components/register/register/register.compo
     AfterIfDirective,
     RegisterComponent,
     ConfirmDeleteDialogComponent,
+    PasswordRecoverDialogComponent,
   ],
   imports: [
     MatSnackBarModule,
     MatDialogModule,
+    MatInputModule,
     MatButtonModule,
     BrowserModule,
     BrowserAnimationsModule,
