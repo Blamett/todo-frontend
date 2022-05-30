@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { ConfirmDeleteDialogComponent } from './components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
-import { RegisterComponent } from './components/register/register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoverDialogComponent } from './components/password-recover-dialog/password-recover-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 
