@@ -18,16 +18,16 @@ export class PasswordRecoverDialogComponent implements OnInit {
   }
 
   async SendMail(emailInput: string, message1: HTMLLabelElement, message2: HTMLLabelElement) {
-    try{
+    try {
       const res = await this.httpService.post('forgot-password', {
         email: emailInput
       })
-  
+
       message1.innerText = 'Email sent!'
       message2.innerText = 'If this Email have an account check your spam to reset password'
     }
-    catch(e){
-      
+    catch (e) {
+
     }
   }
 

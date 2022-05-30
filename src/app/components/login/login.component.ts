@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  resetPassword(){
+  resetPassword() {
     this.dialog.open(PasswordRecoverDialogComponent, {
     });
   }

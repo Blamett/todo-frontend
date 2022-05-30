@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpService } from './services/http.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -27,17 +27,17 @@ export class AppComponent {
       username: this.user,
       password: this.pass
     });
-    if(res.statusCode === 500){
+    if (res.statusCode === 500) {
       this._snackBar.open('Usuário ja existente', 'Fechar');
     }
-    else if(res.statusCode > 299 || res.statusCode < 200){
+    else if (res.statusCode > 299 || res.statusCode < 200) {
       this._snackBar.open(`Senha deve conter -  Letras Maiúsculas (ABC), Minúsculas (abc), Caractere Especial (#$&) e Números (123)`, 'Fechar', {
         duration: this.durationInSeconds * 1000
       })
-   }
-   else if(res.statusCode === 201){
-     this._snackBar.open('Usuário Registrado!', 'Fechar')
-   }
+    }
+    else if (res.statusCode === 201) {
+      this._snackBar.open('Usuário Registrado!', 'Fechar')
+    }
 
   }
 
@@ -46,11 +46,11 @@ export class AppComponent {
       username: this.user,
       password: this.pass
     });
-    if(res.statusCode > 299 || res.statusCode < 200){
-       this._snackBar.open('Usuário ou Senha inválidos', 'Fechar');
+    if (res.statusCode > 299 || res.statusCode < 200) {
+      this._snackBar.open('Usuário ou Senha inválidos', 'Fechar');
     }
-    else if(res.statusCode === 200){
-      
+    else if (res.statusCode === 200) {
+
     }
   }
 }

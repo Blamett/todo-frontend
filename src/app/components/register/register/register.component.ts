@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
 
   async register(email: string, username: string, password: string) {
-    
+
     const res = await this.httpService.post('user', {
       email: email,
       username: username,

@@ -44,7 +44,8 @@
                         </div>
 
                         <ng-template #thenBlock>
-                            <input (after-if)="focusField(editTodo)" #editTodo class="inputEditTodo" type="text" maxlength="62" [value]="todo.task"
+                            <input (after-if)="focusField(editTodo)" #editTodo class="inputEditTodo" type="text"
+                                maxlength="62" [value]="todo.task"
                                 (keyup.enter)="updateTodo(todo.id, editTodo.value)" />
                         </ng-template>
 
