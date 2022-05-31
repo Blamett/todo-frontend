@@ -8,9 +8,8 @@
       <input #registerPassword id='password' type="password" placeholder='Password' autocomplete="off" />
     </div>
     <div id='login-div'>
-      <button id='login' (click)="loginRedirect()">Login</button>
-      <button id='register'
-        (click)="register(this.registerEmail.value, this.registerUser.value, this.registerPassword.value)">Register</button>
+      <button id='register' (click)="register(this.registerEmail.value, this.registerUser.value, this.registerPassword.value)">Register</button>
+      <a id="backlogin" (click)="loginRedirect()">Back to Login</a>
     </div>
   </div>
 </body>

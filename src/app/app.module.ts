@@ -15,6 +15,7 @@ import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoverDialogComponent } from './components/password-recover-dialog/password-recover-dialog.component';
 import { MatInputModule } from '@angular/material/input';
+import { PasswordRecoveryTabComponent } from './password-recovery/password-recovery-tab.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
     RegisterComponent,
     ConfirmDeleteDialogComponent,
     PasswordRecoverDialogComponent,
+    PasswordRecoveryTabComponent,
   ],
   imports: [
     MatSnackBarModule,
