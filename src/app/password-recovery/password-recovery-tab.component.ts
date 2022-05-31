@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PasswordChangedComponent } from '../password-changed-dialog/password-changed.component';
 
 @Component({
   selector: 'app-password-recovery-tab',
@@ -17,6 +19,7 @@ export class PasswordRecoveryTabComponent implements OnInit {
     private httpService: HttpService,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
+    public dialog: MatDialog,
   ) {
     this.route.queryParams.subscribe(params => {
       this.token = params['token'];
@@ -42,6 +45,9 @@ export class PasswordRecoveryTabComponent implements OnInit {
         password: newPassword
       });
     }
+
+    this.dialog.open(PasswordChangedComponent, {
+    });
   }
 
 }
