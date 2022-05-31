@@ -15,8 +15,8 @@ import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoverDialogComponent } from './components/password-recover-dialog/password-recover-dialog.component';
 import { MatInputModule } from '@angular/material/input';
-import { PasswordRecoveryTabComponent } from './password-recovery/password-recovery-tab.component';
-import { PasswordChangedComponent } from './password-changed-dialog/password-changed.component';
+import { PasswordRecoveryTabComponent } from './components/password-recovery/password-recovery-tab.component';
+import { PasswordChangedComponent } from './components/password-changed-dialog/password-changed.component';
 
 @NgModule({
   declarations: [
