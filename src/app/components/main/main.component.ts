@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import { Todo } from './todo';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main',
@@ -30,6 +31,19 @@ export class MainComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.refreshTodos()
+  }
+
+  drop(event: CdkDragDrop<Todo[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
   async isDoneCheckbox(id: string, isDone: boolean) {

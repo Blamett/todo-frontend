@@ -36,7 +36,46 @@
                         data-icon="fluent:send-20-regular" data-width="25" data-height="25"></span></button>
             </div>
 
-            <div id="todo-list">
+            <div id="todo-list" cdkDropListGroup >
+                <div
+                    cdkDropList
+                    [cdkDropListData]="todos"
+                    (cdkDropListDropped)="drop($event)">
+                    <ul>
+                        <li *ngFor="let todo of todos; index as i" class="todo-item" cdkDrag>
+                            <div *ngIf="isItemEditMode(todo); then thenBlock else elseBlock">
+    
+                            </div>
+    
+                            <ng-template #thenBlock>
+                                <input (after-if)="focusField(editTodo)" #editTodo class="inputEditTodo" type="text"
+                                    maxlength="62" [value]="todo.task"
+                                    (keyup.enter)="updateTodo(todo.id, editTodo.value)" />
+                            </ng-template>
+    
+                            <ng-template #elseBlock>
+                                <input type="checkbox" [attr.id]="'todo' + i" name="todo"
+                                    (click)="isDoneCheckbox(todo.id, !todo.isDone)" [checked]="todo.isDone">
+                                <label id="todolabel" [attr.for]="'todo' + i"
+                                    [attr.data-content]="todo.task">{{todo.task}}</label>
+                            </ng-template>
+    
+    
+                            <button class="edit-button" type="" (click)="toggleEditItem(todo)" [disabled]="todo.isDone">
+                                <span class="iconify edit-icon" data-icon="akar-icons:edit" data-width="25"
+                                    data-height="25"></span>
+                            </button>
+    
+                            <button class="delete-button" (click)="confirmDelete(todo.id)">
+                                <span class="iconify delete-icon" data-icon="akar-icons:trash-can" data-width="25"
+                                    data-height="25"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- <div id="todo-list" >
                 <ul>
                     <li *ngFor="let todo of todos; index as i" class="todo-item">
                         <div *ngIf="isItemEditMode(todo); then thenBlock else elseBlock">
@@ -68,7 +107,7 @@
                         </button>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>

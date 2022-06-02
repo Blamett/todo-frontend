@@ -17,6 +17,7 @@ import { PasswordRecoverDialogComponent } from './components/password-recover-di
 import { MatInputModule } from '@angular/material/input';
 import { PasswordRecoveryTabComponent } from './components/password-recovery/password-recovery-tab.component';
 import { PasswordChangedComponent } from './components/password-changed-dialog/password-changed.component';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PasswordChangedComponent } from './components/password-changed-dialog/p
   ],
   imports: [
     MatSnackBarModule,
+    DragDropModule,
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
