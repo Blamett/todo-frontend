@@ -33,7 +33,7 @@ export class MainComponent implements OnInit {
     this.refreshTodos()
   }
 
-  drop(event: CdkDragDrop<Todo[]>) {
+  async drop(event: CdkDragDrop<Todo[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -44,6 +44,14 @@ export class MainComponent implements OnInit {
         event.currentIndex,
       );
     }
+
+    await this.httpService.post('todos/order', {
+      previousIndex: event.previousIndex,
+      currentIndex: event.currentIndex
+
+    })
+
+    console.log(event.previousIndex, event.currentIndex);
   }
 
   async isDoneCheckbox(id: string, isDone: boolean) {
