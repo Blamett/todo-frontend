@@ -1,6 +1,6 @@
 .header {
     display: flex;
-    background-color: #005db2;
+    background-color: #0c64e8;
     height: 45px;
     align-items: center;
 }
@@ -188,8 +188,8 @@ input[type=checkbox]::before {
 
 input[type=checkbox]:checked {
     color: #fff;
-    border-color: #06842c;
-    background: #06842c;
+    border-color: #0c64e8;
+    background: #0c64e8;
 }
 
 input[type=checkbox]:checked::before {
@@ -200,11 +200,13 @@ input[type=checkbox]:checked~label::before {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
+
 label {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', sans-serif;
     max-width: 100%;
     cursor: pointer;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 400;
     padding: 0 0.25em 0;
     padding-right: 50px;
@@ -214,6 +216,7 @@ label {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 
 label::before {
     position: absolute;
@@ -228,8 +231,8 @@ label::before {
 
 li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.185);
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 13px;
+    padding-top: 13px;
 }
 
 .maincontent {}
@@ -343,6 +346,10 @@ li {
     font-size: 21px;
     font-weight: 400;
     color: #3b3b3b;
+}
+
+.todocheckbox{
+    margin: 0;
 }
 
 --------------------

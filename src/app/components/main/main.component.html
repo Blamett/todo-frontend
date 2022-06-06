@@ -54,7 +54,7 @@
                             </ng-template>
     
                             <ng-template #elseBlock>
-                                <input type="checkbox" [attr.id]="'todo' + i" name="todo"
+                                <input class="todocheckbox" type="checkbox" [attr.id]="'todo' + i" name="todo"
                                     (click)="isDoneCheckbox(todo.id, !todo.isDone)" [checked]="todo.isDone">
                                 <label id="todolabel" [attr.for]="'todo' + i"
                                     [attr.data-content]="todo.task">{{todo.task}}</label>

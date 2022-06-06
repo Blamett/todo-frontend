@@ -20,7 +20,10 @@ body {
     vertical-align: baseline;
     display: block;
 
-    background-color: #005db2;
+    background: rgb(0,133,255);
+    background: linear-gradient(145deg, rgba(0,133,255,1) 0%, rgba(31,48,194,1) 100%);
+
+    /* background-color: #005db2; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
