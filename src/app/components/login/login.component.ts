@@ -3,7 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { MatDialog } from '@angular/material/dialog';
-import { PasswordRecoverDialogComponent } from '../password-recover-dialog/password-recover-dialog.component';
+import { PasswordRecoverDialogComponent } from '../popup\'s/password-recover-dialog/password-recover-dialog.component';
+
 
 @Component({
   selector: 'app-root',

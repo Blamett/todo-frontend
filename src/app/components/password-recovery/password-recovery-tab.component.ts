@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { MatDialog } from '@angular/material/dialog';
-import { PasswordChangedComponent } from '../password-changed-dialog/password-changed.component';
+import { PasswordChangedComponent } from '../popup\'s/password-changed-dialog/password-changed.component';
 
 @Component({
   selector: 'app-password-recovery-tab',

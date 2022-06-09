@@ -9,15 +9,16 @@ import { RouterModule } from '@angular/router';
 import { AfterIfDirective } from './after-if.directive';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConfirmDeleteDialogComponent } from './components/confirm-delete-dialog/confirm-delete-dialog.component';
+import { ConfirmDeleteDialogComponent } from './components/popup\'s/confirm-delete-dialog/confirm-delete-dialog.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
-import { PasswordRecoverDialogComponent } from './components/password-recover-dialog/password-recover-dialog.component';
+import { PasswordRecoverDialogComponent } from './components/popup\'s/password-recover-dialog/password-recover-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 import { PasswordRecoveryTabComponent } from './components/password-recovery/password-recovery-tab.component';
-import { PasswordChangedComponent } from './components/password-changed-dialog/password-changed.component';
+import { PasswordChangedComponent } from './components/popup\'s/password-changed-dialog/password-changed.component';
 import { DragDropModule } from '@angular/cdk/drag-drop'
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
   ],
   imports: [
     MatSnackBarModule,
+    MatPaginatorModule,
     DragDropModule,
     MatDialogModule,
     MatInputModule,

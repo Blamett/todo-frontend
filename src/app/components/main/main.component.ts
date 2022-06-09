@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
-import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import { Todo } from './todo';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../popup\'s/confirm-delete-dialog/confirm-delete-dialog.component';
 
 @Component({
   selector: 'app-main',
