@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Custon ip server `ng serve --host 192.168.322.144 --port 6300`
+Custom ip server `ng serve --host 192.168.322.144 --port 6300`
 
 ## Code scaffolding
 
