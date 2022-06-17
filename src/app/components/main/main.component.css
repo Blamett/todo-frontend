@@ -1,8 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+:host::ng-deep .mat-paginator-container {
+    justify-content: center;
+}
+
 .header {
     display: flex;
     background-color: rgb(0, 93, 178);
     height: 45px;
     align-items: center;
+    box-shadow: 0px 1px 3px rgb(0, 0, 0);
 }
 
 .header>div {
@@ -13,18 +24,27 @@
     margin: auto;
 }
 
-body {  
-    
+body {
+    max-height: 600px;
 }
 
 .coluna {
     width: 800px;
-    flex-direction: column;
+    max-width: 100%;
     margin: 0 auto;
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
+
 
 .maincontent {
     width: 100%;
+    flex: 1 1 auto;
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
@@ -238,8 +258,6 @@ li {
     padding-top: 13px;
 }
 
-.maincontent {}
-
 .input {
     position: relative;
 }
@@ -291,7 +309,7 @@ li {
     outline: 0;
     cursor: pointer;
     border-radius: 4px;
-    left: 730px;
+    right: 37px;
     transition: 0.2s;
 }
 
@@ -310,6 +328,9 @@ li {
 
 #todo-list {
     position: relative;
+    flex: 1 1 auto;
+
+    overflow: auto;
 }
 
 .todo-item .edit-button,
@@ -351,65 +372,35 @@ li {
     color: #3b3b3b;
 }
 
-.todocheckbox{
+.todocheckbox {
     margin: 0;
 }
 
---------------------
-
-.example-container {
-    width: 400px;
-    max-width: 100%;
-    margin: 0 25px 25px 0;
-    display: inline-block;
-    vertical-align: top;
-  }
-  
-  .example-list {
-    border: solid 1px #ccc;
-    min-height: 60px;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-  }
-  
-  .example-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
-  }
-  
-  .cdk-drag-preview {
+.cdk-drag-preview {
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
 
-  }
-  
-  .cdk-drag-placeholder {
+}
+
+.cdk-drag-placeholder {
     opacity: 0;
-  }
-  
-  .cdk-drag-animating {
+}
+
+.cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .example-box:last-child {
+}
+
+.example-box:last-child {
     border: none;
-  }
-  
-  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
+}
+
+#paginator {
+    border-top: 2px solid rgba(0, 0, 0, 0.185);
+}

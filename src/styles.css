@@ -115,3 +115,26 @@ video {
 	/* Support for IE. */
 	font-feature-settings: 'liga';
 }
+
+::-webkit-scrollbar {
+	width: 16px;
+}
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.3);
+	background-clip: padding-box;
+	border: 4px solid transparent;
+	border-radius: 8px;
+	box-shadow: none;
+	min-height: 50px;
+}
+::-webkit-scrollbar-track {
+	background: none;
+	border: none;
+}
+::-webkit-scrollbar-track:hover {
+	background: none;
+	border: none;
+}
+::-webkit-scrollbar-corner {
+	background: transparent;
+}

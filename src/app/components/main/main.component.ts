@@ -1,10 +1,11 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
-import { Todo } from './todo';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../popup\'s/confirm-delete-dialog/confirm-delete-dialog.component';
+import { Todo } from './todo';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +15,9 @@ import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../popup\
 export class MainComponent implements OnInit {
 
   todos: Todo[] = [];
+  count: number;
   date = new Date()
+  pageEvent: PageEvent;
   inputodo: string = '';
 
   private isEditModeMap = new Map<Todo, boolean>();
@@ -61,10 +64,12 @@ export class MainComponent implements OnInit {
     this.refreshTodos()
   }
 
-  async refreshTodos() {
-    const res = await this.httpService.get(`todos`)
-    const todoRes = (res.responseBody as Todo[])
-    this.todos = todoRes
+  async refreshTodos(ev?: Partial<PageEvent>) {
+    ev = ev || { pageIndex: 0, pageSize: 12 };
+    const res = await this.httpService.get(`todos`, { page: ev.pageIndex, limit: ev.pageSize })
+    const todoRes = (res.responseBody as { todos: Todo[], count: number })
+    this.todos = todoRes.todos
+    this.count = todoRes.count
   }
 
   async createTodo() {
