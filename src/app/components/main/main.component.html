@@ -14,12 +14,36 @@
     </div>
 
     <div class="right-header">
-        <button id="logout-button" (click)="logout()">
-            <span class="iconify" data-icon="icon-park-outline:logout" style="color: white;" data-width="25"
+        <button id="logout-button" [matMenuTriggerFor]="beforeMenu">
+            <span class="iconify" data-icon="mdi:account-cog" style="color: white;" data-width="25"
                 data-height="25"></span>
         </button>
+
+        <mat-menu #beforeMenu="matMenu" xPosition="before" class="baldin-e-everton-dupla-do-barulho">
+            <div mat-menu-item id="settings">
+                <span id="settings-icon" class="iconify" data-icon="arcticons:settings" style="color: black;" data-width="20" data-height="18"></span>
+                <p>Settings</p>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div mat-menu-item id="logout" (click)="logout()">
+                <span id="logout-icon" class="iconify" data-icon="carbon:logout" data-width="20" data-height="18"></span>
+                <p>Log out</p>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div mat-menu-item id="wnew">
+                <p class="version">v1234</p>
+                <span id="divisor">.</span>
+                <a id="wnew-label">What's new</a>
+            </div>
+
+        </mat-menu>
+
     </div>
 </nav>
+
+
 
 <div class="coluna">
     <div class="mainHeader">
@@ -71,13 +95,8 @@
             </div>
         </div>
 
-        <mat-paginator id="paginator"
-            (page)="refreshTodos($event)"
-            [length]='count'
-            [pageSize]="12"
-            [pageSizeOptions]="[12, 15, 20, 30]"
-            showFirstLastButtons="true"
-            aria-label="Select page">
+        <mat-paginator id="paginator" (page)="refreshTodos($event)" [length]='count' [pageSize]="12"
+            [pageSizeOptions]="[12, 15, 20, 30]" showFirstLastButtons="true" aria-label="Select page">
         </mat-paginator>
     </div>
 </div>

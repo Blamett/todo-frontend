@@ -6,7 +6,7 @@ import { HttpService } from 'src/app/services/http.service';
 @Component({
   selector: 'app-password-changed',
   templateUrl: './password-changed.component.html',
-  styleUrls: ['./password-changed.component.css']
+  styleUrls: ['./password-changed.component.scss']
 })
 
 export class PasswordChangedComponent implements OnInit {

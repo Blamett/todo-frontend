@@ -10,7 +10,7 @@ import { Todo } from './todo';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
 
@@ -105,11 +105,6 @@ export class MainComponent implements OnInit {
     }
   }
 
-  logout() {
-    this.httpService.logout();
-    this.router.navigate(["login"]);
-  }
-
   redirectNonAuthorized() {
     if (!this.httpService.isAuthenticated()) {
       this.router.navigate(["login"]);
@@ -129,5 +124,10 @@ export class MainComponent implements OnInit {
 
   focusField(field: HTMLInputElement) {
     field.focus();
+  }
+
+  logout() {
+    this.httpService.logout();
+    this.router.navigate(["login"]);
   }
 }

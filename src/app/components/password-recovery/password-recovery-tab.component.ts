@@ -8,7 +8,7 @@ import { PasswordChangedComponent } from '../popup\'s/password-changed-dialog/pa
 @Component({
   selector: 'app-password-recovery-tab',
   templateUrl: './password-recovery-tab.component.html',
-  styleUrls: ['./password-recovery-tab.component.css']
+  styleUrls: ['./password-recovery-tab.component.scss']
 })
 export class PasswordRecoveryTabComponent implements OnInit {
 

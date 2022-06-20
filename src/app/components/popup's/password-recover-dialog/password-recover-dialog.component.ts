@@ -5,7 +5,7 @@ import { HttpService } from 'src/app/services/http.service';
 @Component({
   selector: 'app-password-recover-dialog',
   templateUrl: './password-recover-dialog.component.html',
-  styleUrls: ['./password-recover-dialog.component.css']
+  styleUrls: ['./password-recover-dialog.component.scss']
 })
 export class PasswordRecoverDialogComponent implements OnInit {
 

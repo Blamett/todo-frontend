@@ -19,6 +19,9 @@ import { PasswordRecoveryTabComponent } from './components/password-recovery/pas
 import { PasswordChangedComponent } from './components/popup\'s/password-changed-dialog/password-changed.component';
 import { DragDropModule } from '@angular/cdk/drag-drop'
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     PasswordChangedComponent,
   ],
   imports: [
+    MatDividerModule,
+    MatMenuModule,
     MatSnackBarModule,
     MatPaginatorModule,
     DragDropModule,

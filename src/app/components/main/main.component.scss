@@ -14,10 +14,10 @@
     height: 45px;
     align-items: center;
     box-shadow: 0px 1px 3px rgb(0, 0, 0);
-}
 
-.header>div {
-    flex: 1 1 100%;
+    &>div {
+        flex: 1 1 100%; 
+    }
 }
 
 .title {
@@ -223,7 +223,7 @@ input[type=checkbox]:checked~label::before {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 label {
     font-family: 'Raleway', sans-serif;
@@ -366,9 +366,9 @@ li {
     border: 0;
     outline: 0;
     width: 100%;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 21px;
-    font-weight: 400;
+    font-weight: 300;
     color: #3b3b3b;
 }
 
@@ -403,4 +403,32 @@ li {
 
 #paginator {
     border-top: 2px solid rgba(0, 0, 0, 0.185);
+}
+
+#wnew, #logout, #settings {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    max-height: 35px;
+}
+
+#wnew-label {
+    color: rgb(0, 93, 178);
+}
+
+#divisor {
+    padding: 0 5px 5px 5px;
+    align-self: center;
+}
+
+#logout-icon, #settings-icon{
+    margin-right: 10px;
+}
+
+::ng-deep .baldin-e-everton-dupla-do-barulho .mat-menu-content:not(:empty) {
+    font-size: 21px;
+    font-weight: 300;
+	padding: 0;
 }

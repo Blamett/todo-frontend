@@ -9,7 +9,7 @@ import { PasswordRecoverDialogComponent } from '../popup\'s/password-recover-dia
 @Component({
   selector: 'app-root',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
