@@ -105,14 +105,12 @@ body {
     background-color: transparent;
     border: 0;
     padding: 0;
-    margin: 0 0 0 15px;
+    margin: 0 5px 0 40px;
     outline: 0;
 }
 
 #menuicon {
     color: white;
-    width: 50px;
-    height: 25px;
     vertical-align: middle;
 }
 
@@ -354,7 +352,7 @@ li {
 #logout-button {
     position: absolute;
     right: 0;
-    margin-right: 15px;
+    margin-right: 40px;
     background-color: transparent;
     border: 0;
     outline: 0;
@@ -405,7 +403,7 @@ li {
     border-top: 2px solid rgba(0, 0, 0, 0.185);
 }
 
-#wnew, #logout, #settings {
+#menuItem {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -413,6 +411,7 @@ li {
     align-items: center;
     max-height: 35px;
 }
+
 
 #wnew-label {
     color: rgb(0, 93, 178);
@@ -431,4 +430,67 @@ li {
     font-size: 21px;
     font-weight: 300;
 	padding: 0;
+    margin: 6px 0;
+}
+
+#settingsItem{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    height: 75px;
+    width: 275px;
+    max-height: 75px;
+    max-width: 275px;
+}
+
+#settingsButton{
+    display: flex;
+    flex-direction: row;
+    max-height: 35px;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#userInformation{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    & > span {
+        line-height: 17px;
+    }
+}
+
+#menu-settings{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    max-height: 50px;
+}
+
+#userimg{
+    border-radius: 100px;
+    width: 46px;
+    height: 46px;
+    max-height: 46px;
+    max-width: 46px;
+}
+
+#image{
+    margin: 0 15px 0 3px;
+    display: flex;
+}
+
+#userLabel{
+    font-weight: bold;
+}
+
+#emailLabel{
+    color: rgb(99, 99, 99);
+    margin-top: 3px;
+}
+
+#divider{
+    margin: 4px 0;
 }

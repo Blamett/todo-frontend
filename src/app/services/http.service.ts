@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 export class HttpService {
 
   //IBS
-  //private readonly urlBase = 'http://192.168.90.58:3000/';
+  private readonly urlBase = 'http://192.168.90.58:3000/';
 
   //HOME
-  private readonly urlBase = 'http://192.168.0.108:3000/';
+  //private readonly urlBase = 'http://192.168.0.108:3000/';
 
   private authToken: string;
 

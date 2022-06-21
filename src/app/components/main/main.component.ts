@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
@@ -20,6 +20,12 @@ export class MainComponent implements OnInit {
   pageEvent: PageEvent;
   inputodo: string = '';
 
+  @ViewChild("userLabel")
+  username: ElementRef;
+
+  @ViewChild("emailLabel")
+  email: ElementRef;
+
   private isEditModeMap = new Map<Todo, boolean>();
 
   constructor(
@@ -30,10 +36,21 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.redirectNonAuthorized();
+    this.getUsernameAndEmail();
   }
 
   ngAfterViewInit(): void {
     this.refreshTodos()
+  }
+
+  async getUsernameAndEmail() {
+
+    const user =  await this.httpService.get('user/me')
+    const userRes = (user.responseBody as { username: string, email: string })
+    
+    this.username.nativeElement.innerText = userRes.username
+    this.email.nativeElement.innerText = userRes.email
+
   }
 
   async drop(event: CdkDragDrop<Todo[]>) {
@@ -108,6 +125,12 @@ export class MainComponent implements OnInit {
   redirectNonAuthorized() {
     if (!this.httpService.isAuthenticated()) {
       this.router.navigate(["login"]);
+    }
+  }
+
+  backToMain() {
+    if (!this.httpService.isAuthenticated()) {
+      this.router.navigate([""]);
     }
   }
 

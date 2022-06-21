@@ -1,8 +1,10 @@
 <nav class="header">
     <div class="left-header">
-        <button id="menubutton" type="button">
-            <span id="menuicon" class="iconify" data-icon="mdi:menu"></span>
+
+        <button id="menubutton" (click)="backToMain()" type="button">
+            <span id="menuicon" class="iconify" data-icon="bx:menu" style="color: white;" data-width="25" data-height="25"></span>
         </button>
+
         <div class="searchbar">
             <input id="search" type="search" autocomplete="off" placeholder="Search" />
             <span id="searchicon" class="iconify" data-icon="mdi:magnify"></span>
@@ -20,19 +22,33 @@
         </button>
 
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="baldin-e-everton-dupla-do-barulho">
-            <div mat-menu-item id="settings">
-                <span id="settings-icon" class="iconify" data-icon="arcticons:settings" style="color: black;" data-width="20" data-height="18"></span>
-                <p>Settings</p>
-            </div>
-            <mat-divider></mat-divider>
 
-            <div mat-menu-item id="logout" (click)="logout()">
-                <span id="logout-icon" class="iconify" data-icon="carbon:logout" data-width="20" data-height="18"></span>
+            <div mat-menu-item id="settingsItem">
+                <div id="menu-settings">
+                    <div id="image">
+                        <img id="userimg" src="https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc    " alt="">
+                    </div>
+                    <div id="userInformation">
+                        <span #userLabel id="userLabel"></span>
+                        <span #emailLabel id="emailLabel"></span>
+                    </div>
+                </div>
+                
+                <div id="settingsButton">
+                    <span id="settings-icon" class="iconify" data-icon="carbon:settings" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+                    <p>Settings</p>
+                </div>
+                
+            </div>
+            <mat-divider id="divider"></mat-divider>
+
+            <div mat-menu-item id="menuItem" (click)="logout()">
+                <span id="logout-icon" class="iconify" data-icon="carbon:exit" style="color: rgb(75, 75, 75);" data-width="20" data-height="18" data-rotate="180deg"></span>
                 <p>Log out</p>
             </div>
-            <mat-divider></mat-divider>
+            <mat-divider id="divider"></mat-divider>
 
-            <div mat-menu-item id="wnew">
+            <div mat-menu-item id="menuItem">
                 <p class="version">v1234</p>
                 <span id="divisor">.</span>
                 <a id="wnew-label">What's new</a>

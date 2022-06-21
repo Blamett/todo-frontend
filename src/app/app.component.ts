@@ -22,7 +22,6 @@ export class AppComponent {
   ) { };
 
   async register() {
-    // console.log(this.user, this.pass)
     const res = await this.httpService.post('user', {
       username: this.user,
       password: this.pass
