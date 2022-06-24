@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
       this._snackBar.open('Usuário Registrado!', 'Fechar')
     }
 
+    localStorage.setItem("userImg", "default.png")
+
   }
 
   async loginRedirect() {

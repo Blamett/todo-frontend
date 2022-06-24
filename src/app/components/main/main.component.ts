@@ -7,6 +7,27 @@ import { HttpService } from 'src/app/services/http.service';
 import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../popup\'s/confirm-delete-dialog/confirm-delete-dialog.component';
 import { Todo } from './todo';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics, logEvent  } from "firebase/analytics";
+import { getStorage, ref, uploadBytes, getDownloadURL,getMetadata  } from "firebase/storage" 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAb8G-GPbDOoCBVqxPVVfldOj8M9NA82pk",
+  authDomain: "todoapp-6cb9e.firebaseapp.com",
+  projectId: "todoapp-6cb9e",
+  storageBucket: "todoapp-6cb9e.appspot.com",
+  messagingSenderId: "1030358084338",
+  appId: "1:1030358084338:web:4c1b9f28edcdab55913e6b",
+  measurementId: "G-V5TS53W228"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+const analytics = getAnalytics(app);
+logEvent(analytics, 'notification_received');
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -19,6 +40,9 @@ export class MainComponent implements OnInit {
   date = new Date()
   pageEvent: PageEvent;
   inputodo: string = '';
+  selectedFile:any = null
+  userNameMeta: string
+  userProfilePicture: string
 
   @ViewChild("userLabel")
   username: ElementRef;
@@ -40,14 +64,59 @@ export class MainComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
+    this.getUserProfilePicture()
     this.refreshTodos()
   }
 
+  async onFileSelected(event:any){ 
+    this.selectedFile = <File>event.target.files[0]
+    
+    const storageRef = ref(storage, `${this.selectedFile.name}`);
+
+    localStorage.setItem("userImg", this.selectedFile.name)
+
+    const metadata = {
+      customMetadata: {
+        'fromUser': `${this.userNameMeta}`,
+      }
+    };
+
+    await uploadBytes(storageRef, this.selectedFile, metadata).then(() => {
+      console.log('Profile picture updated');
+    });
+
+    this.getUserProfilePicture()
+
+  }
+
+  async getUserProfilePicture(){
+
+    const userImg = localStorage.getItem("userImg")
+
+    const storageRef = ref(storage, userImg);
+
+    await getMetadata(storageRef)
+    .then((metadata0) => {
+
+      const userStoragaRef = ref(storage, `${metadata0.name}`);
+
+      getDownloadURL(userStoragaRef).then((downloadURL) => {
+        this.userProfilePicture = downloadURL
+      });
+      
+    })
+    .catch((error) => {
+      console.log("Uh-oh, an error occurred!")
+    });
+  }
+  
   async getUsernameAndEmail() {
 
     const user =  await this.httpService.get('user/me')
     const userRes = (user.responseBody as { username: string, email: string })
     
+    this.userNameMeta = userRes.username
+
     this.username.nativeElement.innerText = userRes.username
     this.email.nativeElement.innerText = userRes.email
 
@@ -71,7 +140,6 @@ export class MainComponent implements OnInit {
 
     })
 
-    console.log(event.previousIndex, event.currentIndex);
   }
 
   async isDoneCheckbox(id: string, isDone: boolean) {

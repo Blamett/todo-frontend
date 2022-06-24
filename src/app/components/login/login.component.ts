@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
     else if (res.statusCode === 200) {
       this.router.navigate([""]);
     }
+
   }
 
   resetPassword() {

@@ -23,10 +23,17 @@
 
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="baldin-e-everton-dupla-do-barulho">
 
-            <div mat-menu-item id="settingsItem">
+            <input 
+            #fileInput
+            style="display: none;" 
+            accept="image/x-png,image/gif,image/jpeg"
+            type="file" 
+            (change)="onFileSelected($event)">
+
+            <div mat-menu-item id="settingsItem" (click)="fileInput.click()">
                 <div id="menu-settings">
                     <div id="image">
-                        <img id="userimg" src="https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc    " alt="">
+                        <img id="userimg" [src]="userProfilePicture" alt="">
                     </div>
                     <div id="userInformation">
                         <span #userLabel id="userLabel"></span>
@@ -39,6 +46,36 @@
                     <p>Settings</p>
                 </div>
                 
+            </div>
+            <mat-divider id="divider"></mat-divider>
+
+            <div mat-menu-item id="menuItem">
+                <span id="settings-icon" class="iconify" data-icon="carbon:color-palette" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+                <p id="themeLabel">Theme</p>
+                <p>soon...</p>
+            </div>
+
+            <div mat-menu-item id="menuItem">
+                <span id="settings-icon" class="iconify" data-icon="codicon:graph-line" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+                <p id="activityLabel">Activity log</p>
+                <p>soon...</p>
+            </div>
+
+            <div mat-menu-item id="menuItem">
+                <span id="settings-icon" class="iconify" data-icon="ic:outline-queue" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+                <p id="integrationsLabel">Integrations</p>
+                <p>soon...</p>
+            </div>
+            <mat-divider id="divider"></mat-divider>
+
+            <div mat-menu-item id="menuItem">
+                <span id="settings-icon" class="iconify" data-icon="akar-icons:star" style="color: rgb(237, 157, 4);" data-width="20" data-height="18"></span>
+                <p id="upgradeLabel">Upgrade to Pro</p>
+            </div>
+            <div mat-menu-item id="menuItem">
+                <span id="settings-icon" class="iconify" data-icon="codicon:device-mobile" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+                <p id="downloadLabel">Download app</p>
+                <p>soon...</p>
             </div>
             <mat-divider id="divider"></mat-divider>
 
