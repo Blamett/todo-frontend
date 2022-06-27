@@ -8,9 +8,9 @@ import { ConfirmDeleteDialogComponent, ConfirmDeleteDialogData } from '../popup\
 import { Todo } from './todo';
 
 // Import the functions you need from the SDKs you need
+import { getAnalytics, logEvent } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent  } from "firebase/analytics";
-import { getStorage, ref, uploadBytes, getDownloadURL,getMetadata  } from "firebase/storage" 
+import { getDownloadURL, getMetadata, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb8G-GPbDOoCBVqxPVVfldOj8M9NA82pk",
@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
   date = new Date()
   pageEvent: PageEvent;
   inputodo: string = '';
-  selectedFile:any = null
+  selectedFile: File = null
   userNameMeta: string
   userProfilePicture: string
 
@@ -68,9 +68,16 @@ export class MainComponent implements OnInit {
     this.refreshTodos()
   }
 
-  async onFileSelected(event:any){ 
-    this.selectedFile = <File>event.target.files[0]
-    
+  async onFileSelected(inputUpload: HTMLInputElement) {
+
+    const file = inputUpload.files[0];
+
+    const ext = file.name.split(".").pop();
+
+    this.selectedFile = new File([await file.arrayBuffer()], `baldinho.${ext}`, { type: file.type });
+
+    inputUpload.value = null;
+
     const storageRef = ref(storage, `${this.selectedFile.name}`);
 
     localStorage.setItem("userImg", this.selectedFile.name)
@@ -89,32 +96,32 @@ export class MainComponent implements OnInit {
 
   }
 
-  async getUserProfilePicture(){
+  async getUserProfilePicture() {
 
     const userImg = localStorage.getItem("userImg")
 
     const storageRef = ref(storage, userImg);
 
     await getMetadata(storageRef)
-    .then((metadata0) => {
+      .then((metadata0) => {
 
-      const userStoragaRef = ref(storage, `${metadata0.name}`);
+        const userStoragaRef = ref(storage, `${metadata0.name}`);
 
-      getDownloadURL(userStoragaRef).then((downloadURL) => {
-        this.userProfilePicture = downloadURL
+        getDownloadURL(userStoragaRef).then((downloadURL) => {
+          this.userProfilePicture = downloadURL
+        });
+
+      })
+      .catch((error) => {
+        console.log("Uh-oh, an error occurred!")
       });
-      
-    })
-    .catch((error) => {
-      console.log("Uh-oh, an error occurred!")
-    });
   }
-  
+
   async getUsernameAndEmail() {
 
-    const user =  await this.httpService.get('user/me')
+    const user = await this.httpService.get('user/me')
     const userRes = (user.responseBody as { username: string, email: string })
-    
+
     this.userNameMeta = userRes.username
 
     this.username.nativeElement.innerText = userRes.username
@@ -220,5 +227,23 @@ export class MainComponent implements OnInit {
   logout() {
     this.httpService.logout();
     this.router.navigate(["login"]);
+  }
+
+  private async readFile(file: File): Promise<ArrayBuffer> {
+    return new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.addEventListener("loadend", (ev) => {
+
+        if (reader.error) {
+          rej(reader.error);
+        }
+
+        if (reader.result) {
+          res(reader.result as ArrayBuffer);
+        }
+
+      });
+      reader.readAsArrayBuffer(file);
+    });
   }
 }
