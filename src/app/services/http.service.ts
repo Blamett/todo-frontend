@@ -1,4 +1,7 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,54 +17,38 @@ export class HttpService {
   private authToken: string;
 
   constructor(
-    // private readonly router: Router
+    private httpClient: HttpClient,
+    private readonly router: Router,
   ) {
     this.authToken = localStorage.getItem("token");
   }
 
-  private async request(
-    type: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH',
-    endpoint: string,
-    body?: Record<string, any>,
-    query?: Record<string, any>
-  ): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
-    return new Promise((resolve, reject) => {
+  //----------------------------------------------------------------
 
-      const req = new XMLHttpRequest();
-      const url = this.urlBase + endpoint + (
-        query
-          ? `?${Object.keys(query).map(key => `${key}=${encodeURIComponent(query[key])}`).join("&")}`
-          : ""
-      );
+  //OPTIONS
 
-      req.open(type, url, true);
-      req.setRequestHeader('Content-Type', 'application/json')
-      if (this.authToken) {
-        req.setRequestHeader("Authorization", "Bearer " + this.authToken);
-      }
-      req.send(JSON.stringify(body));
+  private getHeaders() {
+    this.verifyTokenExpiration();
+    return {
+      'Content-Type': 'application/json',
+      ...(this.authToken && {
+        'Authorization': 'Bearer ' + this.authToken
+      })
+    };
+  }
 
-      req.addEventListener('load', r => {
-        let resBody;
-        if (req.responseText) {
-          resBody = JSON.parse(req.responseText);
-
-          if (resBody.access_token) {
-            this.setAuthToken(resBody.access_token);
-
-          }
-
-          this.isAuthenticated()
+  private verifyTokenExpiration() {
+    if (this.authToken) {
+      const [, payload] = this.authToken.split(".");
+      const decoded = JSON.parse(atob(payload));
+      if (decoded.exp) {
+        const dataExpiracao = new Date(decoded.exp * 1000);
+        const diff = dataExpiracao.getTime() - (new Date()).getTime()
+        if (diff <= 0) {
+          this.logout();
         }
-
-        resolve({
-          statusCode: req.status,
-          responseBody: resBody,
-        });
-      });
-      req.addEventListener('error', e => reject(e));
-      req.addEventListener('abort', e => reject(e));
-    });
+      }
+    }
   }
 
   isAuthenticated(): boolean {
@@ -70,7 +57,8 @@ export class HttpService {
 
   logout() {
     this.authToken = null;
-    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('token');
+    this.router.navigate(["login"]);
   }
 
   private setAuthToken(token: string) {
@@ -78,23 +66,146 @@ export class HttpService {
     localStorage.setItem("token", token);
   }
 
-  async get(endpoint: string, query?: Record<string, any>) {
-    return await this.request('GET', endpoint, undefined, query);
+  //----------------------------------------------------------------
+
+  //GET REQUEST
+
+  async get(endpoint: string, query?: Record<string, any>): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
+    const result = await firstValueFrom(this.httpClient.get(this.urlBase + endpoint, {
+      headers: this.getHeaders(),
+      params: query,
+      observe: 'response'
+    })) as HttpResponse<any>;
+
+    return {
+      responseBody: result.body,
+      statusCode: result.status,
+    }
   }
 
-  async post(endpoint: string, body: Record<string, any>, query?: Record<string, any>) {
-    return await this.request('POST', endpoint, body, query);
+  //POST REQUEST
+
+  async post(endpoint: string, body: Record<string, any>, query?: Record<string, any>): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
+    const result = await firstValueFrom(this.httpClient.post(this.urlBase + endpoint, body, {
+      headers: this.getHeaders(),
+      params: query,
+      observe: 'response'
+    })) as HttpResponse<any>;
+
+    let resBody
+    if (result.body) {
+      resBody = result.body
+      if (resBody.access_token) {
+        this.authToken = resBody.access_token
+      }
+
+      this.isAuthenticated()
+    }
+
+    this.setAuthToken(this.authToken)
+
+    return {
+      responseBody: result.body,
+      statusCode: result.status,
+    }
   }
 
-  async put(endpoint: string, body: Record<string, any>, query?: Record<string, any>) {
-    return await this.request('PUT', endpoint, body, query);
+  //PUT REQUEST
+
+  async put(endpoint: string, body: Record<string, any>, query?: Record<string, any>): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
+    const result = await firstValueFrom(this.httpClient.put(this.urlBase + endpoint, body, {
+      headers: this.getHeaders(),
+      params: query,
+      observe: 'response'
+    })) as HttpResponse<any>;
+
+    return {
+      responseBody: result.body,
+      statusCode: result.status,
+    }
+
   }
 
-  async patch(endpoint: string, body: Record<string, any>, query?: Record<string, any>) {
-    return await this.request('PATCH', endpoint, body, query);
+  //PATCH REQUEST
+
+  async patch(endpoint: string, body: Record<string, any>, query?: Record<string, any>): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
+    const result = await firstValueFrom(this.httpClient.patch(this.urlBase + endpoint, body, {
+      headers: this.getHeaders(),
+      params: query,
+      observe: 'response'
+    })) as HttpResponse<any>;
+
+    return {
+      responseBody: result.body,
+      statusCode: result.status,
+    }
+
   }
 
-  async delete(endpoint: string, query?: Record<string, any>) {
-    return await this.request('DELETE', endpoint, undefined, query);
+  //DELETE REQUEST
+
+  async delete(endpoint: string, query?: Record<string, any>): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
+    const result = await firstValueFrom(this.httpClient.delete(this.urlBase + endpoint, {
+      headers: this.getHeaders(),
+      params: query,
+      observe: 'response'
+    })) as HttpResponse<any>;
+
+    return {
+      responseBody: result.body,
+      statusCode: result.status,
+    }
   }
+
+  //-------------------------------------------------------------------------------------------------------------------------------------------
+
+  // OLD ROUTE SYSTEM
+
+  // private async request(
+  //   type: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH',
+  //   endpoint: string,
+  //   body?: Record<string, any>,
+  //   query?: Record<string, any>
+  // ): Promise<{ statusCode: number, responseBody: Record<string, any> }> {
+  //   return new Promise((resolve, reject) => {
+
+  //     const req = new XMLHttpRequest();
+  //     const url = this.urlBase + endpoint + (
+  //       query
+  //         ? `?${Object.keys(query).map(key => `${key}=${encodeURIComponent(query[key])}`).join("&")}`
+  //         : ""
+  //     );
+
+  //     req.open(type, url, true);
+  //     req.setRequestHeader('Content-Type', 'application/json')
+  //     if (this.authToken) {
+  //       req.setRequestHeader("Authorization", "Bearer " + this.authToken);
+  //     }
+  //     req.send(JSON.stringify(body));
+
+  //     req.addEventListener('load', r => {
+  //       let resBody;
+  //       if (req.responseText) {
+  //         resBody = JSON.parse(req.responseText);
+
+  //         if (resBody.access_token) {
+  //           this.setAuthToken(resBody.access_token);
+
+  //         }
+
+  //         this.isAuthenticated()
+  //       }
+
+  //       resolve({
+  //         statusCode: req.status,
+  //         responseBody: resBody,
+  //       });
+  //     });
+  //     req.addEventListener('error', e => reject(e));
+  //     req.addEventListener('abort', e => reject(e));
+  //   });
+  // }
+
+  //-------------------------------------------------------------------------------------------------------------------------------------------
+
 }

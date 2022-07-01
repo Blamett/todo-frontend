@@ -226,7 +226,6 @@ export class MainComponent implements OnInit {
 
   logout() {
     this.httpService.logout();
-    this.router.navigate(["login"]);
   }
 
   private async readFile(file: File): Promise<ArrayBuffer> {

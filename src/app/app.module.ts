@@ -21,6 +21,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {MatDividerModule} from '@angular/material/divider';
     PasswordChangedComponent,
   ],
   imports: [
+    HttpClientModule,
     MatDividerModule,
     MatMenuModule,
     MatSnackBarModule,
