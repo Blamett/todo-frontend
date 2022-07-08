@@ -22,6 +22,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginInterceptorModule } from './interceptors/login interceptor/login-interceptor.module';
+import { ErorInterceptorModule } from './interceptors/error interceptor/erro-interceptor.module';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    LoginInterceptorModule,
+    ErorInterceptorModule,
   ],
   providers: [{
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 }

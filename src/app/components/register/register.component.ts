@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
       username: username,
       password: password
     });
+
     if (res.statusCode === 500) {
       this._snackBar.open('Usuário ja existente', 'Fechar');
     }

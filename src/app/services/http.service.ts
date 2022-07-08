@@ -20,7 +20,7 @@ export class HttpService {
     private httpClient: HttpClient,
     private readonly router: Router,
   ) {
-    this.authToken = localStorage.getItem("token");
+    this.loadTokenStorage();
   }
 
   //----------------------------------------------------------------
@@ -31,9 +31,6 @@ export class HttpService {
     this.verifyTokenExpiration();
     return {
       'Content-Type': 'application/json',
-      ...(this.authToken && {
-        'Authorization': 'Bearer ' + this.authToken
-      })
     };
   }
 
@@ -51,7 +48,14 @@ export class HttpService {
     }
   }
 
+  private loadTokenStorage() {
+    this.authToken = localStorage.getItem("token");
+  }
+
   isAuthenticated(): boolean {
+    if (this.authToken == null) {
+      this.loadTokenStorage();
+    }
     return !!this.authToken;
   }
 
@@ -59,11 +63,6 @@ export class HttpService {
     this.authToken = null;
     window.localStorage.removeItem('token');
     this.router.navigate(["login"]);
-  }
-
-  private setAuthToken(token: string) {
-    this.authToken = token;
-    localStorage.setItem("token", token);
   }
 
   //----------------------------------------------------------------
@@ -91,18 +90,6 @@ export class HttpService {
       params: query,
       observe: 'response'
     })) as HttpResponse<any>;
-
-    let resBody
-    if (result.body) {
-      resBody = result.body
-      if (resBody.access_token) {
-        this.authToken = resBody.access_token
-      }
-
-      this.isAuthenticated()
-    }
-
-    this.setAuthToken(this.authToken)
 
     return {
       responseBody: result.body,
