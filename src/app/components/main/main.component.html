@@ -113,6 +113,9 @@
         </div>
 
         <div id="todo-list" cdkDropListGroup>
+            <div class="spinner">
+                <mat-spinner></mat-spinner>
+              </div>
             <div cdkDropList [cdkDropListData]="todos" (cdkDropListDropped)="drop($event)">
                 <ul>
                     <li *ngFor="let todo of todos; index as i" class="todo-item" cdkDrag>

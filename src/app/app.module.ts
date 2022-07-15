@@ -24,7 +24,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginInterceptorModule } from './interceptors/login interceptor/login-interceptor.module';
 import { ErorInterceptorModule } from './interceptors/error interceptor/erro-interceptor.module';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { ErorInterceptorModule } from './interceptors/error interceptor/erro-int
     PasswordChangedComponent,
   ],
   imports: [
+    MatProgressSpinnerModule,
     HttpClientModule,
     MatDividerModule,
     MatMenuModule,

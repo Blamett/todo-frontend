@@ -245,4 +245,5 @@ export class MainComponent implements OnInit {
       reader.readAsArrayBuffer(file);
     });
   }
+
 }
