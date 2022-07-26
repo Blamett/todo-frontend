@@ -11,6 +11,7 @@ import { Todo } from './todo';
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getDownloadURL, getMetadata, getStorage, ref, uploadBytes } from "firebase/storage";
+import { SettingsDialogComponent } from '../popup\'s/settings-dialog/settings-dialog.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb8G-GPbDOoCBVqxPVVfldOj8M9NA82pk",
@@ -183,6 +184,13 @@ export class MainComponent implements OnInit {
           this.deleteTodo(id);
         }
       } as ConfirmDeleteDialogData
+    });
+  }
+
+  settingsTab(){
+    this.dialog.open(SettingsDialogComponent, {
+      height: '690px',
+      width: '1060px',
     });
   }
 

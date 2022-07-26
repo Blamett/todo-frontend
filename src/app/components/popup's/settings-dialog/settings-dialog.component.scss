@@ -1,0 +1,74 @@
+
+.shortcuts{
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 690px;
+  background-color: #fafafa;  
+}
+
+header{
+  padding: 12px 8px 12px 12px;
+  max-height: 48px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 8px;
+}
+
+.shortLabel{
+  height: 100%;
+}
+
+ul{
+  padding: 12px;
+}
+
+#menuItem {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  min-height: 24px;
+  margin-top: 4px;
+}
+
+#menuItem-wn{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+  align-self: center;
+  padding: 4px 8px 4px 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  min-height: 20px;
+
+  margin-top: 360px;
+}
+
+#menuItem:hover, #menuItem-wn:hover{
+  background-color: #f2f2f2;
+}
+
+#menuItem:active{
+  background-color: #e6e6e6;
+}
+
+#icon{
+  margin-right: 6px;
+}
+
+#label{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#label-wn{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(0, 93, 178);
+}
