@@ -112,10 +112,17 @@
                     data-icon="fluent:send-20-regular" data-width="25" data-height="25"></span></button>
         </div>
 
-        <div id="todo-list" cdkDropListGroup>
+        <div id="todo-list" cdkDropListGroup *ngIf="!isLoaded; then mostrarLoaderSpinner else mostrarTodos">
+            
+        </div>
+
+        <ng-template #mostrarLoaderSpinner>
             <div class="spinner">
                 <mat-spinner></mat-spinner>
-              </div>
+            </div>
+        </ng-template>
+
+        <ng-template #mostrarTodos>
             <div cdkDropList [cdkDropListData]="todos" (cdkDropListDropped)="drop($event)">
                 <ul>
                     <li *ngFor="let todo of todos; index as i" class="todo-item" cdkDrag>
@@ -149,7 +156,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </ng-template>
 
         <mat-paginator id="paginator" (page)="refreshTodos($event)" [length]='count' [pageSize]="12"
             [pageSizeOptions]="[12, 15, 20, 30]" showFirstLastButtons="true" aria-label="Select page">

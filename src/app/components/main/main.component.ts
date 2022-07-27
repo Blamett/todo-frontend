@@ -43,6 +43,7 @@ export class MainComponent implements OnInit {
   selectedFile: File = null
   userNameMeta: string
   userProfilePicture: string
+  isLoaded:boolean = false
 
   @ViewChild("userLabel")
   username: ElementRef;
@@ -157,9 +158,11 @@ export class MainComponent implements OnInit {
   }
 
   async refreshTodos(ev?: Partial<PageEvent>) {
+    this.isLoaded = false
     ev = ev || { pageIndex: 0, pageSize: 12 };
     const res = await this.httpService.get(`todos`, { page: ev.pageIndex, limit: ev.pageSize })
     const todoRes = (res.responseBody as { todos: Todo[], count: number })
+    this.isLoaded = true
     this.todos = todoRes.todos
     this.count = todoRes.count
   }

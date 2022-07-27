@@ -2,19 +2,23 @@
   <div className="App" class="app">
     <h1 id='app1'>TODO<span id='app2'>Login</span></h1>
     <!-- <h2 id="pageTittle">Login</h2> -->
-    <div id="user_pass">
-      <input id='user' type="text" placeholder='User' autocomplete="off" [(ngModel)]="user" />
-      <input id='password' type="password" placeholder='Password' autocomplete="off" [(ngModel)]="pass" />
-      <a id="passReset" (click)="resetPassword()">Forgot my password</a>
-    </div>
-    <div id='login-div'>
-      <button id='login' (click)="login()">Login</button>
-      <button id='register' (click)="registerRedirect()">Register</button>
-    </div>
+    <form ng-form #form="ngForm" (ngSubmit)="login(form)">  
 
-    <div id="login-google">
-      <button id='login' (click)="loginGoogle()"><img id="google-img" src="https://logopng.com.br/logos/google-37.png" alt="Login with google"/></button>
-    </div>
-
+      <div id="user_pass">
+        <input id='user' name="username" type="text" placeholder='User' autocomplete="off" [ngModel]/>
+        <input id='password' name="password" type="password" placeholder='Password' autocomplete="off" [ngModel]/>
+        <a id="passReset" (click)="resetPassword()">Forgot my password</a>
+      </div>
+      
+      <div id='login-div'>
+        <button id='login' type="submit">Login</button>
+        <button id='register' (click)="registerRedirect()">Register</button>
+      </div>
+  
+      <!-- <div id="login-google">
+        <button id='login' (click)="loginGoogle()"><img id="google-img" src="https://logopng.com.br/logos/google-37.png" alt="Login with google"/></button>
+      </div> -->
+  
+    </form>
   </div>
 </body>

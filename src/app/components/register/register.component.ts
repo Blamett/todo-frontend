@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
@@ -25,13 +26,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  async register(email: string, username: string, password: string) {
+  async register(form: NgForm) {
 
-    const res = await this.httpService.post('user', {
-      email: email,
-      username: username,
-      password: password
-    });
+    const res = await this.httpService.post('user', form.form.value);
 
     if (res.statusCode === 500) {
       this._snackBar.open('Usuário ja existente', 'Fechar');
