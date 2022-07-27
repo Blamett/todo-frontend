@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -10,13 +9,10 @@ import { HttpService } from 'src/app/services/http.service';
 export class SettingsDialogComponent implements OnInit {
 
   constructor(
-    private readonly router: Router,
     private readonly httpService: HttpService,
   ) { }
 
   ngOnInit(): void {
   }
-
-  
 
 }

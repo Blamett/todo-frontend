@@ -23,14 +23,8 @@
 
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="baldin-e-everton-dupla-do-barulho">
 
-            <input 
-            #fileInput
-            style="display: none;" 
-            accept="image/*"
-            type="file" 
-            (change)="onFileSelected(fileInput)">
 
-            <div mat-menu-item id="settingsItem" (click)="fileInput.click()">
+            <div mat-menu-item id="settingsItem" (click)="settingsTab()">
                 <div id="menu-settings">
                     <div id="image">
                         <img id="userimg" [src]="userProfilePicture" alt="">
@@ -49,7 +43,7 @@
             </div>
             <mat-divider id="divider"></mat-divider>
 
-            <div mat-menu-item id="menuItem" (click)="settingsTab()">
+            <div mat-menu-item id="menuItem">
                 <span id="settings-icon" class="iconify" data-icon="carbon:color-palette" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
                 <p id="themeLabel">Theme</p>
                 <p>soon...</p>

@@ -1,0 +1,43 @@
+<div class="maincontent">
+    <header>
+        <div class="header-content">
+            <h1>
+                Account
+            </h1>
+        </div>
+
+        <div class="btn">
+            <button class="btn">
+                X
+            </button>
+        </div>
+    </header>
+
+    <div class="content">
+
+        <input 
+            #fileInput
+            style="display: none;" 
+            accept="image/*"
+            type="file" 
+            (change)="onFileSelected(fileInput)">
+
+    
+        <h3 class="subitem">
+            Photo
+        </h3>
+
+        <div id="imagecontent">
+            <div id="image">
+                <img id="userimg" [src]="userProfilePicture" alt="">
+            </div>
+
+            <div class="changePhotoBtn">
+                <button (click)="fileInput.click()">
+                    change photo
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

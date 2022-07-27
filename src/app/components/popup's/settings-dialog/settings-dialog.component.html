@@ -9,9 +9,8 @@
         </header>
 
         <div>
-            <ul>
-
-                <div id="menuItem">
+            <nav>
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['test'] } }]" routerLinkActive="active">
                     <span id="icon" class="iconify" data-icon="carbon:user-avatar" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
                     <p id="label">Account</p>
                 </div>
@@ -41,7 +40,7 @@
                     <p id="label">Download app</p>
                 </div>
     
-            </ul>
+            </nav>
         </div>
 
         <div id="menuItem-wn">
@@ -51,6 +50,8 @@
     </div>
 
     <div class="shortContent">
+
+        <router-outlet name="settings"></router-outlet>
         
     </div>
 </div>

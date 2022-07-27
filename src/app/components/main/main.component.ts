@@ -41,7 +41,6 @@ export class MainComponent implements OnInit {
   date = new Date()
   pageEvent: PageEvent;
   inputodo: string = '';
-  selectedFile: File = null
   userNameMeta: string
   userProfilePicture: string
   isLoaded:boolean = false
@@ -68,34 +67,6 @@ export class MainComponent implements OnInit {
   ngAfterViewInit(): void {
     this.getUserProfilePicture()
     this.refreshTodos()
-  }
-
-  async onFileSelected(inputUpload: HTMLInputElement) {
-
-    const file = inputUpload.files[0];
-
-    const ext = file.name.split(".").pop();
-
-    this.selectedFile = new File([await file.arrayBuffer()], `baldinho.${ext}`, { type: file.type });
-
-    inputUpload.value = null;
-
-    const storageRef = ref(storage, `${this.selectedFile.name}`);
-
-    localStorage.setItem("userImg", this.selectedFile.name)
-
-    const metadata = {
-      customMetadata: {
-        'fromUser': `${this.userNameMeta}`,
-      }
-    };
-
-    await uploadBytes(storageRef, this.selectedFile, metadata).then(() => {
-      console.log('Profile picture updated');
-    });
-
-    this.getUserProfilePicture()
-
   }
 
   async getUserProfilePicture() {
@@ -188,6 +159,7 @@ export class MainComponent implements OnInit {
   }
 
   settingsTab(){
+
     this.dialog.open(SettingsDialogComponent, {
       height: '690px',
       width: '1060px',

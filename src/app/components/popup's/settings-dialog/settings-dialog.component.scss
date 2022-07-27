@@ -1,3 +1,9 @@
+.content{
+  display: flex;
+  flex-direction: row;
+  max-width: 1060px;
+  max-height: 690px;
+}
 
 .shortcuts{
   display: flex;
@@ -5,6 +11,13 @@
   width: 220px;
   height: 690px;
   background-color: #fafafa;  
+}
+
+.shortContent{
+  display: flex;
+  flex-direction: column;
+  width: 840px;
+  height: 690px;
 }
 
 header{
@@ -18,7 +31,7 @@ header{
   height: 100%;
 }
 
-ul{
+nav{
   padding: 12px;
 }
 
