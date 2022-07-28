@@ -15,7 +15,7 @@
                     <p id="label">Account</p>
                 </div>
                 
-                <div id="menuItem">
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['theme'] } }]" routerLinkActive="active">
                     <span id="icon" class="iconify" data-icon="carbon:color-palette" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
                     <p id="label">Theme</p>
                 </div>
