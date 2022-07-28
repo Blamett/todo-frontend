@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getDownloadURL, getMetadata, getStorage, ref, uploadBytes } from "firebase/storage";
+import { timeout } from 'rxjs';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb8G-GPbDOoCBVqxPVVfldOj8M9NA82pk",
@@ -25,6 +26,7 @@ export class AccountComponent implements OnInit {
   userProfilePicture: string
   selectedFile: File = null
   userNameMeta: string
+  isLoaded: boolean = true
 
   constructor() { }
 
@@ -32,7 +34,13 @@ export class AccountComponent implements OnInit {
     this.getUserProfilePicture()
   }
 
+  sleep(ms: any) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   async onFileSelected(inputUpload: HTMLInputElement) {
+
+    this.isLoaded = true
 
     const file = inputUpload.files[0];
 
@@ -79,6 +87,11 @@ export class AccountComponent implements OnInit {
       .catch((error) => {
         console.log("Uh-oh, an error occurred!")
       });
+
+    await this.sleep(500)
+
+    this.isLoaded = false
+
   }
 
 }

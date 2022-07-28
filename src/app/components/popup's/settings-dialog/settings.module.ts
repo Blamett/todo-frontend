@@ -5,7 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account tab/account.component';
 import { SettingsDialogComponent } from './settings-dialog.component';
 import { ThemeComponent } from './themes tab/theme.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
 const appRoutes: Routes = [
     { path: "account", component: AccountComponent, outlet: 'settings'},
@@ -18,7 +19,9 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forChild(
       appRoutes
-    )
+    ),
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   declarations: [
     SettingsDialogComponent,

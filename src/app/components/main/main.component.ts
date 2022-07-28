@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
   inputodo: string = '';
   userNameMeta: string
   userProfilePicture: string
-  isLoaded:boolean = false
+  isLoaded: boolean = false
 
   @ViewChild("userLabel")
   username: ElementRef;
@@ -158,11 +158,12 @@ export class MainComponent implements OnInit {
     });
   }
 
-  settingsTab(){
+  settingsTab() {
 
     this.dialog.open(SettingsDialogComponent, {
       height: '690px',
       width: '1060px',
+      panelClass: "baldin-dialog"
     });
   }
 
