@@ -22,7 +22,16 @@
             Photo
         </h3>
 
-        <div *ngIf="isLoaded; then mostrarLoaderSpinner else mostrarUserImg"></div>
+        <div *ngIf="isLoaded; then mostrarLoaderSpinner else mostrarUserImg">
+
+        </div>
+
+        <div class="userInformation">
+            <h3 class="subitem">
+                Email
+            </h3>
+            <span #emailLabel id="emailLabel"></span>
+        </div>
 
     </div>
 

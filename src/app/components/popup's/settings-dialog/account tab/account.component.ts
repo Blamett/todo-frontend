@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getDownloadURL, getMetadata, getStorage, ref, uploadBytes } from "firebase/storage";
 import { timeout } from 'rxjs';
+import { HttpService } from 'src/app/services/http.service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb8G-GPbDOoCBVqxPVVfldOj8M9NA82pk",
@@ -28,10 +29,16 @@ export class AccountComponent implements OnInit {
   userNameMeta: string
   isLoaded: boolean = true
 
-  constructor() { }
+  @ViewChild("emailLabel")
+  email: ElementRef;
+
+  constructor(
+    private readonly httpService: HttpService,
+  ) { }
 
   ngOnInit(): void {
     this.getUserProfilePicture()
+    this.getUsernameAndEmail()
   }
 
   sleep(ms: any) {
@@ -91,6 +98,17 @@ export class AccountComponent implements OnInit {
     await this.sleep(500)
 
     this.isLoaded = false
+
+  }
+
+  async getUsernameAndEmail() {
+
+    const user = await this.httpService.get('user/me')
+    const userRes = (user.responseBody as { username: string, email: string })
+
+    this.userNameMeta = userRes.username
+
+    this.email.nativeElement.innerText = userRes.email
 
   }
 

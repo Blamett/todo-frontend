@@ -10,10 +10,6 @@ header{
     border-bottom: 1px solid rgb(172, 168, 168);
 }
 
-.btn{
-    
-}
-
 .content{
     display: flex;
     flex-direction: column;
@@ -51,4 +47,16 @@ header{
 .photobtn{
     width: 120px;
     line-height: 30px;
+}
+
+.userInformation{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#emailLabel{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: rgb(0,0,0,0.88);
 }
