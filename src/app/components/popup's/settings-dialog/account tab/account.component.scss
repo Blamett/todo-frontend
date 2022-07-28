@@ -55,8 +55,9 @@ header{
     flex-direction: column;
 }
 
-#emailLabel{
+#emailLabel, #userLabel{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     color: rgb(0,0,0,0.88);
+    margin-bottom: 15px;
 }

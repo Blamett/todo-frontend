@@ -29,6 +29,9 @@ export class AccountComponent implements OnInit {
   userNameMeta: string
   isLoaded: boolean = true
 
+  @ViewChild("userLabel")
+  username: ElementRef;
+
   @ViewChild("emailLabel")
   email: ElementRef;
 
@@ -109,6 +112,7 @@ export class AccountComponent implements OnInit {
     this.userNameMeta = userRes.username
 
     this.email.nativeElement.innerText = userRes.email
+    this.username.nativeElement.innerText = userRes.username
 
   }
 
