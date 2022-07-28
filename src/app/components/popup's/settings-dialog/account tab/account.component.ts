@@ -17,10 +17,10 @@ const storage = getStorage(app);
 
 @Component({
   selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss']
 })
-export class TestComponent implements OnInit {
+export class AccountComponent implements OnInit {
 
   userProfilePicture: string
   selectedFile: File = null

@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { TestComponent } from './test/test.component';
+import { AccountComponent } from './account tab/account.component';
 import { SettingsDialogComponent } from './settings-dialog.component';
 
 
 const appRoutes: Routes = [
-    { path: "test", component: TestComponent, outlet: 'settings'},
+    { path: "account", component: AccountComponent, outlet: 'settings'},
 ];
 
 @NgModule({
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   ],
   declarations: [
     SettingsDialogComponent,
-    TestComponent
+    AccountComponent
   ],
   bootstrap: [ SettingsDialogComponent ]
 })

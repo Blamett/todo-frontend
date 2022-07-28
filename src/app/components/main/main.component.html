@@ -24,7 +24,7 @@
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="baldin-e-everton-dupla-do-barulho">
 
 
-            <div mat-menu-item id="settingsItem" (click)="settingsTab()">
+            <div mat-menu-item id="settingsItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['account'] } }]" routerLinkActive="active">
                 <div id="menu-settings">
                     <div id="image">
                         <img id="userimg" [src]="userProfilePicture" alt="">
