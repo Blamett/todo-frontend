@@ -48,27 +48,22 @@
                 <p id="themeLabel">Theme</p>
             </div>
 
-            <div mat-menu-item id="menuItem">
+            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['activity'] } }]" routerLinkActive="active">
                 <span id="settings-icon" class="iconify" data-icon="codicon:graph-line" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
                 <p id="activityLabel">Activity log</p>
                 <p>soon...</p>
             </div>
 
-            <div mat-menu-item id="menuItem">
+            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['integrations'] } }]" routerLinkActive="active">
                 <span id="settings-icon" class="iconify" data-icon="ic:outline-queue" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
                 <p id="integrationsLabel">Integrations</p>
                 <p>soon...</p>
             </div>
             <mat-divider id="divider"></mat-divider>
 
-            <div mat-menu-item id="menuItem">
+            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['donations'] } }]" routerLinkActive="active">
                 <span id="settings-icon" class="iconify" data-icon="akar-icons:star" style="color: rgb(237, 157, 4);" data-width="20" data-height="18"></span>
-                <p id="upgradeLabel">Upgrade to Pro</p>
-            </div>
-            <div mat-menu-item id="menuItem">
-                <span id="settings-icon" class="iconify" data-icon="codicon:device-mobile" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
-                <p id="downloadLabel">Download app</p>
-                <p>soon...</p>
+                <p id="upgradeLabel">Donate</p>
             </div>
             <mat-divider id="divider"></mat-divider>
 

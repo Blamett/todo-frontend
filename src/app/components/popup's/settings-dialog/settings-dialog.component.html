@@ -20,24 +20,19 @@
                     <p id="label">Theme</p>
                 </div>
 
-                <div id="menuItem">
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['donations'] } }]" routerLinkActive="active">
                     <span id="icon" class="iconify" data-icon="akar-icons:star" style="color: rgb(237, 157, 4);" data-width="23" data-height="20"></span>
-                    <p id="label">Subscription</p>
+                    <p id="label">Donations</p>
                 </div>
                 
-                <div id="menuItem">
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['activity'] } }]" routerLinkActive="active">
                     <span id="icon" class="iconify" data-icon="codicon:graph-line" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
-                    <p id="label">Productivity</p>
+                    <p id="label">Activity</p>
                 </div>
     
-                <div id="menuItem">
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['integrations'] } }]" routerLinkActive="active">
                     <span id="icon" class="iconify" data-icon="ic:outline-queue" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
                     <p id="label">Integrations</p>
-                </div>
-    
-                <div id="menuItem">
-                    <span id="icon" class="iconify" data-icon="codicon:device-mobile" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
-                    <p id="label">Download app</p>
                 </div>
     
             </nav>

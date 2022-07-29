@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-test',
-  templateUrl: './theme.component.html',
-  styleUrls: ['./theme.component.scss']
+  templateUrl: './integration.component.html',
+  styleUrls: ['./integration.component.scss']
 })
-export class ThemeComponent implements OnInit { 
+export class IntegrationsComponent implements OnInit { 
 
   userProfilePicture: string
   selectedFile: File = null
