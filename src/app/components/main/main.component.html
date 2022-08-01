@@ -2,7 +2,8 @@
     <div class="left-header">
 
         <button id="menubutton" (click)="backToMain()" type="button">
-            <span id="menuicon" class="iconify" data-icon="bx:menu" style="color: white;" data-width="25" data-height="25"></span>
+            <span id="menuicon" class="iconify" data-icon="bx:menu" style="color: white;" data-width="25"
+                data-height="25"></span>
         </button>
 
         <div class="searchbar">
@@ -24,7 +25,8 @@
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="baldin-e-everton-dupla-do-barulho">
 
 
-            <div mat-menu-item id="settingsItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['account'] } }]" routerLinkActive="active">
+            <div mat-menu-item id="settingsItem" (click)="settingsTab()"
+                [routerLink]="[{ outlets: { settings: ['account'] } }]" routerLinkActive="active">
                 <div id="menu-settings">
                     <div id="image">
                         <img id="userimg" [src]="userProfilePicture" alt="">
@@ -34,41 +36,51 @@
                         <span #emailLabel id="emailLabel"></span>
                     </div>
                 </div>
-                
+
                 <div id="settingsButton">
-                    <span id="settings-icon" class="iconify" data-icon="carbon:settings" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+                    <span id="settings-icon" class="iconify" data-icon="carbon:settings" style="color: rgb(75, 75, 75);"
+                        data-width="20" data-height="18"></span>
                     <p>Settings</p>
                 </div>
-                
+
             </div>
             <mat-divider id="divider"></mat-divider>
 
-            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['theme'] } }]" routerLinkActive="active">
-                <span id="settings-icon" class="iconify" data-icon="carbon:color-palette" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+            <div mat-menu-item id="menuItem" (click)="settingsTab()"
+                [routerLink]="[{ outlets: { settings: ['theme'] } }]" routerLinkActive="active">
+                <span id="settings-icon" class="iconify" data-icon="carbon:color-palette"
+                    style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
                 <p id="themeLabel">Theme</p>
             </div>
 
-            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['activity'] } }]" routerLinkActive="active">
-                <span id="settings-icon" class="iconify" data-icon="codicon:graph-line" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+            <div mat-menu-item id="menuItem" (click)="settingsTab()"
+                [routerLink]="[{ outlets: { settings: ['activity'] } }]" routerLinkActive="active">
+                <span id="settings-icon" class="iconify" data-icon="codicon:graph-line" style="color: rgb(75, 75, 75);"
+                    data-width="20" data-height="18"></span>
                 <p id="activityLabel">Activity log</p>
                 <p>soon...</p>
             </div>
 
-            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['integrations'] } }]" routerLinkActive="active">
-                <span id="settings-icon" class="iconify" data-icon="ic:outline-queue" style="color: rgb(75, 75, 75);" data-width="20" data-height="18"></span>
+            <div mat-menu-item id="menuItem" (click)="settingsTab()"
+                [routerLink]="[{ outlets: { settings: ['integrations'] } }]" routerLinkActive="active">
+                <span id="settings-icon" class="iconify" data-icon="ic:outline-queue" style="color: rgb(75, 75, 75);"
+                    data-width="20" data-height="18"></span>
                 <p id="integrationsLabel">Integrations</p>
                 <p>soon...</p>
             </div>
             <mat-divider id="divider"></mat-divider>
 
-            <div mat-menu-item id="menuItem" (click)="settingsTab()" [routerLink]="[{ outlets: { settings: ['donations'] } }]" routerLinkActive="active">
-                <span id="settings-icon" class="iconify" data-icon="akar-icons:star" style="color: rgb(237, 157, 4);" data-width="20" data-height="18"></span>
+            <div mat-menu-item id="menuItem" (click)="settingsTab()"
+                [routerLink]="[{ outlets: { settings: ['donations'] } }]" routerLinkActive="active">
+                <span id="settings-icon" class="iconify" data-icon="akar-icons:star" style="color: rgb(237, 157, 4);"
+                    data-width="20" data-height="18"></span>
                 <p id="upgradeLabel">Donate</p>
             </div>
             <mat-divider id="divider"></mat-divider>
 
             <div mat-menu-item id="menuItem" (click)="logout()">
-                <span id="logout-icon" class="iconify" data-icon="carbon:exit" style="color: rgb(75, 75, 75);" data-width="20" data-height="18" data-rotate="180deg"></span>
+                <span id="logout-icon" class="iconify" data-icon="carbon:exit" style="color: rgb(75, 75, 75);"
+                    data-width="20" data-height="18" data-rotate="180deg"></span>
                 <p>Log out</p>
             </div>
             <mat-divider id="divider"></mat-divider>
@@ -100,8 +112,8 @@
                     data-icon="fluent:send-20-regular" data-width="25" data-height="25"></span></button>
         </div>
 
-        <div id="todo-list" cdkDropListGroup *ngIf="!isLoaded; then mostrarLoaderSpinner else mostrarTodos">
-            
+        <!-- <div cdkDropListGroup *ngIf="!isLoaded; then mostrarLoaderSpinner else mostrarTodos">
+
         </div>
 
         <ng-template #mostrarLoaderSpinner>
@@ -111,43 +123,47 @@
         </ng-template>
 
         <ng-template #mostrarTodos>
-            <div cdkDropList [cdkDropListData]="todos" (cdkDropListDropped)="drop($event)">
-                <ul>
-                    <li *ngFor="let todo of todos; index as i" class="todo-item" cdkDrag>
-                        <div *ngIf="isItemEditMode(todo); then thenBlock else elseBlock">
+        
+        </ng-template> -->
 
-                        </div>
+        <div id="todo-list" cdkDropList [cdkDropListData]="todos" (cdkDropListDropped)="drop($event)">
+            <ul>
+                <li *ngFor="let todo of todos; index as i" class="todo-item" cdkDrag>
+                    <div *ngIf="isItemEditMode(todo); then thenBlock else elseBlock">
 
-                        <ng-template #thenBlock>
-                            <input (after-if)="focusField(editTodo)" #editTodo class="inputEditTodo" type="text"
-                                maxlength="62" [value]="todo.task"
-                                (keyup.enter)="updateTodo(todo.id, editTodo.value)" />
-                        </ng-template>
+                    </div>
 
-                        <ng-template #elseBlock>
-                            <input class="todocheckbox" type="checkbox" [attr.id]="'todo' + i" name="todo"
-                                (click)="isDoneCheckbox(todo.id, !todo.isDone)" [checked]="todo.isDone">
-                            <label id="todolabel" [attr.for]="'todo' + i"
-                                [attr.data-content]="todo.task">{{todo.task}}</label>
-                        </ng-template>
+                    <ng-template #thenBlock>
+                        <input (after-if)="focusField(editTodo)" #editTodo class="inputEditTodo" type="text"
+                            maxlength="62" [value]="todo.task"
+                            (keyup.enter)="updateTodo(todo.id, editTodo.value)" />
+                    </ng-template>
+
+                    <ng-template #elseBlock>
+                        <input class="todocheckbox" type="checkbox" [attr.id]="'todo' + i" name="todo"
+                            (click)="isDoneCheckbox(todo.id, !todo.isDone)" [checked]="todo.isDone">
+                        <label id="todolabel" [attr.for]="'todo' + i"
+                            [attr.data-content]="todo.task">{{todo.task}}</label>
+                    </ng-template>
 
 
-                        <button class="edit-button" type="" (click)="toggleEditItem(todo)" [disabled]="todo.isDone">
-                            <span class="iconify edit-icon" data-icon="akar-icons:edit" data-width="25"
-                                data-height="25"></span>
-                        </button>
+                    <button class="edit-button" type="" (click)="toggleEditItem(todo)" [disabled]="todo.isDone">
+                        <span class="iconify edit-icon" data-icon="akar-icons:edit" data-width="25"
+                            data-height="25"></span>
+                    </button>
 
-                        <button class="delete-button" (click)="confirmDelete(todo.id)">
-                            <span class="iconify delete-icon" data-icon="akar-icons:trash-can" data-width="25"
-                                data-height="25"></span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </ng-template>
+                    <button class="delete-button" (click)="confirmDelete(todo.id)">
+                        <span class="iconify delete-icon" data-icon="akar-icons:trash-can" data-width="25"
+                            data-height="25"></span>
+                    </button>
+                </li>
+            </ul>
+        </div>
 
-        <mat-paginator id="paginator" (page)="refreshTodos($event)" [length]='count' [pageSize]="12"
-            [pageSizeOptions]="[12, 15, 20, 30]" showFirstLastButtons="true" aria-label="Select page">
-        </mat-paginator>
     </div>
+
+    <mat-paginator id="paginator" (page)="refreshTodos($event)" [length]='count' [pageSize]="12"
+        [pageSizeOptions]="[12, 15, 20, 30]" showFirstLastButtons="true" aria-label="Select page">
+    </mat-paginator>
+
 </div>
