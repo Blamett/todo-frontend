@@ -11,6 +11,7 @@ import { Todo } from './todo';
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getDownloadURL, getMetadata, getStorage, ref, uploadBytes } from "firebase/storage";
+import { SettingsDialogComponent } from '../popup\'s/settings-dialog/settings-dialog.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb8G-GPbDOoCBVqxPVVfldOj8M9NA82pk",
@@ -40,10 +41,9 @@ export class MainComponent implements OnInit {
   date = new Date()
   pageEvent: PageEvent;
   inputodo: string = '';
-  selectedFile: File = null
   userNameMeta: string
   userProfilePicture: string
-  isLoaded:boolean = false
+  isLoaded: boolean = false
 
   @ViewChild("userLabel")
   username: ElementRef;
@@ -67,34 +67,6 @@ export class MainComponent implements OnInit {
   ngAfterViewInit(): void {
     this.getUserProfilePicture()
     this.refreshTodos()
-  }
-
-  async onFileSelected(inputUpload: HTMLInputElement) {
-
-    const file = inputUpload.files[0];
-
-    const ext = file.name.split(".").pop();
-
-    this.selectedFile = new File([await file.arrayBuffer()], `baldinho.${ext}`, { type: file.type });
-
-    inputUpload.value = null;
-
-    const storageRef = ref(storage, `${this.selectedFile.name}`);
-
-    localStorage.setItem("userImg", this.selectedFile.name)
-
-    const metadata = {
-      customMetadata: {
-        'fromUser': `${this.userNameMeta}`,
-      }
-    };
-
-    await uploadBytes(storageRef, this.selectedFile, metadata).then(() => {
-      console.log('Profile picture updated');
-    });
-
-    this.getUserProfilePicture()
-
   }
 
   async getUserProfilePicture() {
@@ -183,6 +155,15 @@ export class MainComponent implements OnInit {
           this.deleteTodo(id);
         }
       } as ConfirmDeleteDialogData
+    });
+  }
+
+  settingsTab() {
+
+    this.dialog.open(SettingsDialogComponent, {
+      height: '690px',
+      width: '1060px',
+      panelClass: "baldin-dialog"
     });
   }
 

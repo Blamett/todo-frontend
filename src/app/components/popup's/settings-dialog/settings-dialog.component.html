@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="shortcuts">
+        <header>
+            <div>
+                <h1>
+                    Settings
+                </h1>
+            </div>
+        </header>
+
+        <div>
+            <nav>
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['account'] } }]" routerLinkActive="active">
+                    <span id="icon" class="iconify" data-icon="carbon:user-avatar" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
+                    <p id="label">Account</p>
+                </div>
+                
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['theme'] } }]" routerLinkActive="active">
+                    <span id="icon" class="iconify" data-icon="carbon:color-palette" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
+                    <p id="label">Theme</p>
+                </div>
+
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['donations'] } }]" routerLinkActive="active">
+                    <span id="icon" class="iconify" data-icon="akar-icons:star" style="color: rgb(237, 157, 4);" data-width="23" data-height="20"></span>
+                    <p id="label">Donations</p>
+                </div>
+                
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['activity'] } }]" routerLinkActive="active">
+                    <span id="icon" class="iconify" data-icon="codicon:graph-line" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
+                    <p id="label">Activity</p>
+                </div>
+    
+                <div id="menuItem" [routerLink]="[{ outlets: { settings: ['integrations'] } }]" routerLinkActive="active">
+                    <span id="icon" class="iconify" data-icon="ic:outline-queue" style="color: rgb(75, 75, 75);" data-width="23" data-height="20"></span>
+                    <p id="label">Integrations</p>
+                </div>
+    
+            </nav>
+        </div>
+
+        <div id="menuItem-wn">
+            <p id="label-wn">What's new</p>
+        </div>
+        
+    </div>
+
+    <div class="shortContent">
+
+        <router-outlet name="settings"></router-outlet>
+        
+    </div>
+</div>

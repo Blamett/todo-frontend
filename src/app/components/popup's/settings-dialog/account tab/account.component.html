@@ -1,0 +1,63 @@
+<div class="maincontent">
+    <header>
+        <div class="header-content">
+            <h1>
+                Account
+            </h1>
+        </div>
+
+        <div class="btn">
+            <button class="btn">
+                X
+            </button>
+        </div>
+    </header>
+
+    <div class="content">
+
+        <input #fileInput style="display: none;" accept="image/*" type="file" (change)="onFileSelected(fileInput)">
+
+
+        <h3 class="subitem">
+            Photo
+        </h3>
+
+        <div *ngIf="isLoaded; then mostrarLoaderSpinner else mostrarUserImg">
+
+        </div>
+
+        <div class="userInformation">
+            <h3 class="subitem">
+                Name
+            </h3>
+            <span #userLabel id="userLabel"></span>
+
+            <h3 class="subitem">
+                Email
+            </h3>
+            <span #emailLabel id="emailLabel"></span>
+        </div>
+
+    </div>
+
+    <ng-template #mostrarLoaderSpinner>
+        <div>
+            <mat-spinner diameter="80"></mat-spinner>
+        </div>
+    </ng-template>
+
+    <ng-template #mostrarUserImg>
+        <div id="imagecontent">
+            <div id="image">
+                <img id="userimg" [src]="userProfilePicture" alt="">
+            </div>
+
+            <div class="changePhotoBtn">
+                <button class="photobtn" mat-raised-button color="primary" (click)="fileInput.click()">
+                    change photo
+                </button>
+            </div>
+        </div>
+    </ng-template>
+
+</div>

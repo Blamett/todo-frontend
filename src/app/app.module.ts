@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginInterceptorModule } from './interceptors/login interceptor/login-interceptor.module';
 import { ErorInterceptorModule } from './interceptors/error interceptor/erro-interceptor.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SettingsModule } from './components/popup\'s/settings-dialog/settings.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RouterModule.forRoot(routes),
     LoginInterceptorModule,
     ErorInterceptorModule,
+    SettingsModule,
   ],
   providers: [{
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 }
